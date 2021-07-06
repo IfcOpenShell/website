@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+{% block head %}
+<head>
+  <meta charset="utf-8">
+
+  <title>IfcOpenShell</title>
+  <meta name="description" content="The free open source IFC geometry engine">
+  <meta name="author" content="Thomas Krijnen">
+  
+  <link rel="stylesheet" href="/static/main.css" />
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename = 'static/main.css') }}" /> -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+{% endblock %}
+
+
+
+<body>
+{% block sous%}
+<div id='page'>
+<div id='header'>
+    <h1><a href="{{url_for('home')}}"><img src='static/ifcopenshell_logo.png' alt="IfcOpenShell logo"></a><span>IfcOpenShell</span></h1>
+    <h2>the open source ifc toolkit and geometry engine</h2>
+</div>
+<ul id='menu'>
+    <li><a {% if request.path == url_for('home') %} id="active" {% endif %} href="{{url_for('home')}}">Home</a>
+      <ul>
+        <li><a target="_blank" href="https://ifcopenshell.github.io/docs/">Docs</a></li>
+        <li><a target="_blank" href="https://github.com/IfcOpenShell/IfcOpenShell">Code</a></li>
+      </ul>
+    </li>
+    <li>Products<ul>
+        <li><a {% if request.path == url_for('max') %} id="active" {% endif %} href="{{url_for('max')}}">IfcMax</a></li>
+        <li><a {% if request.path == url_for('blender') %} id="active" {% endif %} href="{{url_for('blender')}}">IfcBlender</a></li>
+        <li><a {% if request.path == url_for('convert') %} id="active" {% endif %} href="{{url_for('convert')}}">IfcConvert</a></li>
+        <li><a {% if request.path == url_for('python') %} id="active" {% endif %} href="{{url_for('python')}}">IfcOpenShell-python</a></li>
+        <!--<li><a href="cpp.html">IfcOpenShell-C++</a></li>-->
+        <li><a {% if request.path == url_for('bimserver') %} id="active" {% endif %} href="{{url_for('bimserver')}}">BIMserver plug-in</a></li>
+        <!--<li><a href="freecad.html">FreeCAD plug-in</a></li>-->
+    </ul></li>
+    <li>Community<ul>
+        <li><a target="_blank" href="http://blog.ifcopenshell.org">Blog</a></li>
+        <li><a target="_blank" href="https://sourceforge.net/p/ifcopenshell/discussion/">Forums</a></li>
+    </ul></li>
+    <!-- <li><a {% if request.path == url_for('code') %} id="active" {% endif %} href="{{url_for('code')}}">Source code</a></li> -->
+</ul>
+<div id='alerts'>
+
+{% if False %}
+<div class='alert'>
+<div class='date'><span>March 21, 2017:</span></div>
+<div>
+<span><b>IfcOpenShell 0.5.0 preview 2</b> has just been released!<br>Visit <a href='http://blog.ifcopenshell.org'>http://blog.ifcopenshell.org</a> for a changelog and stay updated on the development of IfcOpenShell.</span>
+</div>
+<br style='clear:both'>
+</div>
+<div class='alert'>
+<div class='date'>August 23, 2011:</div>
+<div>
+<b>IfcOpenShell</b> needs your help! Find out what you can do to help improve the open source IFC toolkit, visit <a href='http://blog.ifcopenshell.org/2011/08/ifcopenshell-needs-your-help.html'>http://blog.ifcopenshell.org/2011/08/ifcopenshell-needs-your-help.html</a>.
+</div>
+<br style='clear:both'>
+</div>
+{% endif %}
+
+<div class='alert'>
+<div class='date'><span>August 12, 2020:</span></div>
+<div>
+<span>Want to view building models on the web? Have a look at
+<a href='https://github.com/AECgeeks/ifc-pipeline'>IFC pipeline</a>. An open source self-hosted IFC processing and visualization pipeline.
+Available to try at <a href='https://view.ifcopenshell.org'>view.ifcopenshell.org</a>
+</div>
+<br style='clear:both'>
+</div>
+
+</div>
+<div id='content'>
+
+<a class="github-button" href="https://github.com/IfcOpenShell/IfcOpenShell"                                    data-size="small" data-show-count="true" aria-label="Star IfcOpenShell on GitHub">Star</a>
+<a class="github-button" href="https://github.com/IfcOpenShell/IfcOpenShell/fork"   data-icon="octicon-repo-forked"  data-size="small" data-show-count="true" aria-label="Fork IfcOpenShell on GitHub">Fork</a>
+
+{% endblock %}
+
+
+
+{% block content %}
+<h2>the open source ifc toolkit and geometry engine {{a}}</h2>
+<ul>
+<!-- <li><a href="{{ url_for('convert')}}"> -->
+Home</a></li>
+{% endblock %}
+
+<h4>Please visit the <a href="https://sourceforge.net/p/ifcopenshell/discussion/">forums</a> for additional support</h4>
+
+<!-- and hosted at &nbsp;<a href="http://sourceforge.net/projects/ifcopenshell"><img width="80" height="15" src="http://sflogo.sourceforge.net/sflogo.php?group_id=543113&amp;type=10" alt="Get IfcOpenShell at SourceForge.net. Fast, secure and Free Open Source software downloads"></a> -->
+
+</span>
+</div>
+</div>
+</div>
+
+{% block tail %}
+<div id='tail'>
+<a href='http://archikey.com' target='_blank' id='archikey' title='Archikey.com the free on-line architecture archive'>
+<img src="static/archikey.jpg" alt="Archikey.com">
+Can't get enough of semantics in the built environment?<br>
+Visit Archikey.com, the free community-based semi-semantical architecture archive!<br style='clear:both'>
+</a>
+<a href='http://twitter.com/aothms' target='_blank' id='twitter'>
+<img src="static/twitter.png" alt="Follow IfcOpenShell on twitter">
+Comments? Suggestions? Feature requests? Just plain angry with the world?<br>
+Follow the development of IfcOpenShell on twitter (@aothms)
+</a>
+</div>
+{% endblock %}
+</body>
+</html>

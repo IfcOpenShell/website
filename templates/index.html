@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>IfcOpenShell</h2>
+<p>IfcOpenShell is an open source (<span class='help' title='GNU Lesser General Public License'>LGPL</span>) software library that helps users and software developers to work with the <span class='help' title='Industry Foundation Classes'>IFC</span> file format. The <span class='help' title='Industry Foundation Classes'>IFC</span> file format can be used to describe building and construction data. The format is commonly used for Building Information Modelling.</p>
+<p>IfcOpenShell uses <a href="http://opencascade.org">Open CASCADE</a> (the <a href="https://github.com/tpaviot/oce/">Open CASCADE Community Edition</a>) internally to convert the implicit geometry in <span class='help' title='Industry Foundation Classes'>IFC</span> files into explicit geometry that any software CAD or modelling package can understand.</p>
+<p>Please note that IfcOpenShell is a work in progress. At the moment only files with the .ifc extension are supported (technically known as IFC-SPF). Support for IFC-XML and IFC-ZIP will be added in the future. Please note that at this moment IfcOpenShell may not fully understand all geometry that is present in an .ifc file, rest assured that it&rsquo;ll do the very best it can and support for the other types of geometry is already on its way.</p>
+<p>Currently on the menu is an importer for Autodesk 3ds Max, an importer for Blender and a stand-alone application to convert an IFC file into a Wavefront .obj file. Furthermore, software developers are explicitly  encouraged to use the IfcOpenShell library in their own applications.</p>
+<!--<h2>Features</h2>
+<p>Easy interface for reading and writing. Support for advanced geometry definitions (CSG, Profiles). Robust boolean operations. Permissive license. Advanced export formats.
+<h2>Products</h2>
+<p>Choose the free open source tool that suits you.</p>-->
+<h2>Frequently Asked Questions</h2>
+<dl>
+<dt>What's with the name? Ifc Opens Hell?</dt>
+<dd>No, you're not reading it correctly. An IfcOpenShell is one of the ways geometry can be described inside an Ifc file. Since the name reflects on the Ifc part, the open source part and the geometry part of the project, we figured we'd pick this as our name.<br>PS: No, we're not called openIfcShell either</dd>
+<dt>Ok, so how do you make money with this?</dt>
+<dd>We don't. Are you? How about <a href="https://sourceforge.net/project/project_donations.php?group_id=543113">sharing some of the pie</a> or <a href="http://blog.ifcopenshell.org/2011/08/ifcopenshell-needs-your-help.html">help out with development or testing</a>!</dd>
+</dl>
+
+{% endblock %}

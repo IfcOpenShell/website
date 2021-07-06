@@ -1,0 +1,174 @@
+body, html {
+ margin: 0;
+ padding: 0;
+ background: #f2f2f2;
+ font-family: 'Open Sans', sans-serif;
+}
+#space {
+ height: 36px;
+}
+h1 img {
+ padding-right: 32px;
+}
+h1 span {
+ display: inline-block;
+ padding-top: 36px;
+}
+h1 {
+ font-size: 30px;
+ line-height: 30px;
+}
+h1, h2 {
+ margin: 0;
+ padding: 0;
+}
+#header h1, #header h2 {
+ color: #888;
+}
+#header h2 {
+ font-size: 18px;
+ line-height: 36px;
+ color: #bbb;
+ font-weight: 400;
+}
+h1 img {
+ display: block;
+ float: left;
+}
+ul#menu {
+ padding: 36px 0 0 50px;
+ margin: 0;
+ font-size: 90%;
+}
+ul#menu ul {
+ margin: 0;
+ padding: 0;
+}
+ul#menu > li > a {
+ color: black;
+}
+ul#menu > li {
+ float: left;
+ padding: 0 10px;
+ border-left: solid 1px #8cc63f;
+ font-weight: bold;
+}
+ul#menu > li:last-child {
+ border-right: solid 1px #8cc63f;
+}
+ul#menu li {
+ display: block;
+ list-style-type: none;
+ margin: 0;
+ text-align: left;
+ vertical-align: top;
+}
+ul#menu li li {
+ font-weight: normal;
+}
+a {
+ color: #888;
+ text-decoration: none;
+}
+a:hover, a#active {
+ color: #8cc63f !important;
+ text-decoration: underline;
+}
+#content {
+ clear: both;
+ padding: 32px 163px 0;
+}
+#alerts {
+ padding: 10px 30px 26px 30px;
+ background: #fcfcfc;
+ border: solid 1px #eee;
+ border-width: 1px 0p;
+ clear: both;
+ /*display: none;*/
+}
+.alert div.date {
+ width: 133px;
+ font-size: 80%;
+ margin-top: 16px;
+}
+.alert div {
+ float: left;
+ width: 700px;
+ margin-top: 16px;
+}
+#header {
+ width: 550px;
+ padding: 50px;
+}
+#page {
+ background: white;
+ border-bottom: solid 1px #ddd;
+}
+#footer {
+ display: inline-block;
+ font-size: 12px;
+ padding: 16px 0 32px;
+}
+#footer img {
+ vertical-align: middle;
+}
+p {
+ margin-top: 0;
+ padding-top: 0;
+}
+dl {
+ padding: 16px 0 0 0;
+ margin:0;
+}
+dt {
+ font-weight: bold;
+}
+dd {
+ margin:0;
+ padding: 0 0 18px 0;
+}
+#tail {
+ padding: 16px 0 16px 163px;
+}
+a#twitter,
+a#archikey {
+ display: block;
+ padding: 30px 20px 0px 20px;
+ border: none;
+ font-size: 16px;
+ width: 800px;
+}
+a#twitter img,
+a#archikey img {
+ border: none;
+ display: block;
+ float: left;
+ margin: -8px 20px 0 0;
+}
+a#archikey img {
+ margin-top: -20px;
+}
+a#twitter {
+ padding: 0 0 20px 20px;
+}
+@media (min-width: 1200px) {
+ ul#menu {
+  float: right;
+  padding: 36px 36px 0 0;
+ }
+ #header {
+  float: left;
+ }
+}
+.screenshots img, pre, p.code {
+ display: block;
+ border: solid 1px #ddd;
+ padding: 3px;
+ margin: 20px 0;
+ border-radius: 4px; 
+}
+pre, p.code {
+ padding: 20px;
+ background: #fcfcfc;
+ max-width: 800px;
+}

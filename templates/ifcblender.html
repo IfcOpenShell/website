@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>IfcBlender: An ifc importer for Blender</h2>
+
+<h3 style='border: solid 1px black;padding: 20px;font-weight: normal;'>Note: this is the legacy IFC for Blender importer, users are advised to
+upgrade to <a href='https://blenderbim.org/'>https://blenderbim.org/</a>
+which support importing and exporting IFC and additional features for
+engineering buildings.</h3>
+
+<h3>Installation instructions for Windows, Linux and Mac OSX</h3>
+<ul>
+
+<li>Determine if your copy of Blender is 32bit or 64bit</li>
+<li>Download the appropriate version of IfcBlender</li>
+
+<li style='list-style-type:none'>0.6.0 latest</li>
+<ul>
+<li style='list-style-type:none'><b>Windows</b></li>
+{% for t in builds_v06['Windows'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+<li style='list-style-type:none'><b>MACOSX</b></li>
+{% for t in builds_v06['OSX'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+<li style='list-style-type:none'><b>Linux</b></li>
+{% for t in builds_v06['Linux'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+</ul></li>
+
+<li style='list-style-type:none'>0.5.0 latest</li>
+<ul>
+<li style='list-style-type:none'><b>Windows</b></li>
+{% for t in builds_master['Windows'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+<li style='list-style-type:none'><b>MACOSX</b></li>
+{% for t in builds_master['OSX'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+<li style='list-style-type:none'><b>Linux</b></li>
+{% for t in builds_master['Linux'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+</ul></li>
+
+<li style='list-style-type:none'>0.5.0 preview 2</li>
+<li style='list-style-type:none'><ul>
+<li style='list-style-type:none'><b>Windows</b></li>
+<li><a href="https://github.com/IfcOpenShell/IfcOpenShell/releases/download/v0.5.0-preview2/ifcblender-python35-master-9ad68db-win32.zip" target="_blank">IfcBlender for Blender 2.78 32bit Windows</a></li>
+<li><a href="https://github.com/IfcOpenShell/IfcOpenShell/releases/download/v0.5.0-preview2/ifcblender-python35-master-9ad68db-win64.zip" target="_blank">IfcBlender for Blender 2.78 64bit Windows</a></li>
+<li style='list-style-type:none'><b>Mac OSX</b> <span style='font-size:80%'>(built using the 10.6 SDK)</span></li>
+<!-- <li style='list-style-type:none;font-size:80%'>Users are advised to use a 32bit Blender and IfcOpenShell on OSX if possible</li> -->
+<li><a href="https://github.com/IfcOpenShell/IfcOpenShell/releases/download/v0.5.0-preview2/ifcblender-python35-master-40f3447-osx64.zip" target="_blank">IfcBlender for Blender 2.78 64bit OSX</a></li>
+<li style='list-style-type:none'><b>Linux</b> <span style='font-size:80%'>(suits most recent distributions)</span></li>
+<li><a href="https://github.com/IfcOpenShell/IfcOpenShell/releases/download/v0.5.0-preview2/ifcblender-python35-master-9ad68db-linux32.zip" target="_blank">IfcBlender for Blender 2.78 32bit Linux</a></li>
+<li><a href="https://github.com/IfcOpenShell/IfcOpenShell/releases/download/v0.5.0-preview2/ifcblender-python35-master-9ad68db-linux64.zip" target="_blank">IfcBlender for Blender 2.78 64bit Linux</a></li>
+</ul></li>
+
+<li style='list-style-type:none'>0.4.0</li>
+<li style='list-style-type:none'><ul>
+<li style='list-style-type:none'><b>Windows</b></li>
+<li><a href="http://sourceforge.net/projects/ifcopenshell/files/0.4.0-rc2/IfcBlender-0.4.0-rc2-blender2.73-win32.zip/download" target="_blank">IfcBlender for Blender 2.73 32bit Windows</a></li>
+<li><a href="http://sourceforge.net/projects/ifcopenshell/files/0.4.0-rc2/IfcBlender-0.4.0-rc2-blender2.73-win64.zip/download" target="_blank">IfcBlender for Blender 2.73 64bit Windows</a></li>
+<li style='list-style-type:none'><b>Mac OSX</b> <span style='font-size:80%'>(built using the 10.6 SDK)</span></li>
+<!-- <li style='list-style-type:none;font-size:80%'>Users are advised to use a 32bit Blender and IfcOpenShell on OSX if possible</li> -->
+<li><a href="http://sourceforge.net/projects/ifcopenshell/files/0.4.0-rc2/IfcBlender-0.4.0-rc2-blender2.73-osx32.zip/download" target="_blank">IfcBlender for Blender 2.73 32bit OSX</a></li>
+<li><a href="http://sourceforge.net/projects/ifcopenshell/files/0.4.0-rc2/IfcBlender-0.4.0-rc2-blender2.73-osx64.zip/download" target="_blank">IfcBlender for Blender 2.73 64bit OSX</a></li>
+<li style='list-style-type:none'><b>Linux</b> <span style='font-size:80%'>(suits most recent distributions)</span></li>
+<li><a href="http://sourceforge.net/projects/ifcopenshell/files/0.4.0-rc2/IfcBlender-0.4.0-rc2-blender2.73-linux32.zip/download" target="_blank">IfcBlender for Blender 2.73 32bit Linux</a></li>
+<li><a href="http://sourceforge.net/projects/ifcopenshell/files/0.4.0-rc2/IfcBlender-0.4.0-rc2-blender2.73-linux64.zip/download" target="_blank">IfcBlender for Blender 2.73 64bit Linux</a></li>
+</ul></li>
+
+<li>Install the Blender add-on by clicking on File &gt; User Preferences &gt; Add-ons &gt; Install from File... and by pointing Blender to the archive downloaded above</li>
+<li>Enable the Blender add-on by clicking on File &gt; User Preferences &gt; Add-ons &gt; Import-Export &gt; Import-Export: IfcBlender</li>
+
+</ul>
+
+<h3>Installation on other platforms</h3>
+<ul>
+<li>Download and compile the sources of <a href="http://www.opencascade.org/getocc/download/loadocc/">Open CASCADE</a>, or use your package manager to install the libraries<br>
+You can also use the <a href="https://github.com/tpaviot/oce">Open CASCADE Community Edition</a>, it provides a CMake file for easy configuration</li>
+<li>Download and compile the sources of <a href="code.html">IfcOpenShell</a></li>
+<ul>
+<li>For 0.4: Move <i>__init__.py</i>, <i>_IfcImport.so</i> and <i>IfcImport.py</i> into a new folder in your blender addons folder</li>
+<li>For 0.5: Move the built artefacts along with the files in the ifcopenshell-python and ifcblender repository folders into a new folder in your blender addons folder</li>
+</ul>
+<li>Enable the Blender add-on by clicking on File &gt; User Preferences &gt; Add-ons &gt; Import-Export &gt; Import-Export: IfcBlender</li>
+</ul>
+<h3>Usage</h3>
+<ul>
+<li>You can now import .ifc files by selecting Industry Foundation Classes (.ifc) from the File &gt; Import menu</li>
+</ul>
+
+<div class='screenshots'>
+<img src="static/ifcblender-munkerud.jpg" alt="Screenshot of Blender running the addon" />
+<img src="static/ifcblender-dialog.jpg" alt="Screenshot of Blender running the addon" />
+<img src="static/ifcblender-console.jpg" alt="Screenshot of Blender running the addon" />
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>IfcOpenShell for BIMserver</h2>
+<p style='padding-bottom:0px; color: gray;'>From the <a href='http://BIMserver.org'>BIMserver.org</a> website:</p>
+<p style='padding-left:100px;padding-right:100px;font-style:italic; color: gray;'>The Building Information Model server (BIMserver) software enables you to host your own BIMserver to centralize the information of any construction (or other building related) project. The core is based on the open standard IFC and therefore knows how to handle IFC data. The BIMserver is nót a fileserver; IFC data are interpreted by a smart core and stored in an underlying database. The BIMserver software is free and open source. It’s ideal to support your dynamic collaboration process in the AEC sector. </p>
+<p>IfcOpenShell is distributed with the BIMserver as a plug-in to interpret the geometry in IFC files being checked in into the server. The development of the plug-in is shared between the BIMserver and the IfcOpenShell teams and can be followed on <a href='https://github.com/opensourceBIM/IfcOpenShell-BIMserver-plugin'>github.com/opensourceBIM/IfcOpenShell-BIMserver-plugin</a>.
+
+
+</ul></li>
+<!-- <h3>New builds</h3> -->
+<li style='list-style-type:none'><b>New builds</b></li>
+<ul>
+
+<li style='list-style-type:none'><b>Windows</b></li>
+{% for t in builds_master['Windows'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+
+<li style='list-style-type:none'><b>MACOSX</b></li>
+{% for t in builds_master['OSX'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+
+
+<li style='list-style-type:none'><b>Linux</b></li>
+{% for t in builds_master['Linux'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+
+
+{% endblock %}
