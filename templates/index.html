@@ -2,21 +2,111 @@
 
 {% block content %}
 
-<h2>IfcOpenShell</h2>
-<p>IfcOpenShell is an open source (<span class='help' title='GNU Lesser General Public License'>LGPL</span>) software library that helps users and software developers to work with the <span class='help' title='Industry Foundation Classes'>IFC</span> file format. The <span class='help' title='Industry Foundation Classes'>IFC</span> file format can be used to describe building and construction data. The format is commonly used for Building Information Modelling.</p>
-<p>IfcOpenShell uses <a href="http://opencascade.org">Open CASCADE</a> (the <a href="https://github.com/tpaviot/oce/">Open CASCADE Community Edition</a>) internally to convert the implicit geometry in <span class='help' title='Industry Foundation Classes'>IFC</span> files into explicit geometry that any software CAD or modelling package can understand.</p>
-<p>Please note that IfcOpenShell is a work in progress. At the moment only files with the .ifc extension are supported (technically known as IFC-SPF). Support for IFC-XML and IFC-ZIP will be added in the future. Please note that at this moment IfcOpenShell may not fully understand all geometry that is present in an .ifc file, rest assured that it&rsquo;ll do the very best it can and support for the other types of geometry is already on its way.</p>
-<p>Currently on the menu is an importer for Autodesk 3ds Max, an importer for Blender and a stand-alone application to convert an IFC file into a Wavefront .obj file. Furthermore, software developers are explicitly  encouraged to use the IfcOpenShell library in their own applications.</p>
-<!--<h2>Features</h2>
-<p>Easy interface for reading and writing. Support for advanced geometry definitions (CSG, Profiles). Robust boolean operations. Permissive license. Advanced export formats.
-<h2>Products</h2>
-<p>Choose the free open source tool that suits you.</p>-->
-<h2>Frequently Asked Questions</h2>
+<div class="jumbo">
+        <div class="jumbo-text">
+            <h1>IfcOpenShell</h1>
+            <p class="subheader">the <span>open source</span> IFC toolkit and geometry engine</p>
+        </div>
+        <div class="jumbo-graph">
+            <img src="/static/ifcos-graphs.svg" alt="computer-graph">    
+        </div>
+    </div>
+    <p class="tagline">IfcOpenShell helps you build digital platforms and tools for the built environment. Read, write and modify Building Information Models using IFC, a diverse digital language from design to construction and beyond.</p>
+    <div class="abstract">
+        <div class="abstract-text">
+            <h2>What is IfcOpenShell?</h2>
+            <p class="content">
+                <a class="github-button" href="https://github.com/IfcOpenShell/IfcOpenShell"                                    data-size="small" data-show-count="true" aria-label="Star IfcOpenShell on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/IfcOpenShell/IfcOpenShell/fork"   data-icon="octicon-repo-forked"  data-size="small" data-show-count="true" aria-label="Fork IfcOpenShell on GitHub">Fork</a>
+            </p>
+            <p class="content">
+                IfcOpenShell is an open source (LGPL) software library that helps users and software developers to work with the IFC file format. The IFC file format can be used to describe building and construction data. The format is commonly used for Building Information Modelling.
+            </p>
+            <p class="content">
+                IfcOpenShell uses Open CASCADE internally to convert the implicit geometry in IFC files into explicit geometry that any software CAD or modelling package can understand.
+            </p>
+        </div>
+    </div>
+    <div class="group">
+        <h2>Why IfcOpenShell?</h2>
+        <div class="card-group">
+            <div class="card">
+                <h3>Reliable</h3>
+                Long history of solid engineering. Trusted by many.
+            </div>
+            <div class="card">
+                <h3>Multi-Language</h3>
+                Develop in C++, Python or use the many stand-alone conversion and analysis tools.
+            </div>
+            <div class="card">
+                <h3>IFC Schemas</h3>
+                Supports IFC releases IFC2x3 TC1, IFC4 Add2 TC1, and IFC4.3
+            </div>
+            <div class="card">
+                <h3>Keep it Simple</h3>
+                Python API with over 250 high-level use cases keeps writing complex IFC super simple
+            </div>
+            <div class="card">
+                <h3>Build it all</h3>
+                Supports (almost) all IFC geometry definitions from boolean operations to complex sweeps.
+            </div>
+            <div class="card">
+                <h3>3D and 2D</h3>
+                Generate compelling architectural 2D drawings from the 3D BIM model with ease.
+            </div>
+            <div class="card">
+                <h3>More tools</h3>
+                Collection of Unix-like tools for clash detection, CSV, diffing, patching and more.
+            </div>
+            <div class="card">
+                <h3>Community</h3>
+                Academy, documentation, tutorials and snippets.
+            </div>
+        </div>
+    </div>
+    <div class="group">
+        <h2>Getting started is easy!</h2>
+        <div class='accordion-nav'>
+            <h3 class='active'>Python and pythonOCC</h3><h3 title='Under construction'>C++ and Qt</h3><h3 title='Under construction'>Python high level API</h3><h3 title='Under construction'>C++ command line</h3>
+        </div>
+        <div class="img-group">
+            <div class='window'>
+                <div class='titlebar'>
+                    <span>&bullet;</span>
+                    <span>&bullet;</span>
+                    <span>&bullet;</span>
+                    main.py
+                </div>
+                <div class='mainwindow'>
+                    <pre>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">ifcopenshell</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">ifcopenshell.geom</span>
+
+f <span style="color: #666666">=</span> ifcopenshell<span style="color: #666666">.</span>open(<span style="color: #BA2121">&quot;my_model.ifc&quot;</span>)
+ifcopenshell<span style="color: #666666">.</span>geom<span style="color: #666666">.</span>utils<span style="color: #666666">.</span>initialize_display()
+settings <span style="color: #666666">=</span> ifcopenshell<span style="color: #666666">.</span>geom<span style="color: #666666">.</span>settings(USE_PYTHON_OPENCASCADE<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">True</span>)
+<span style="color: #008000; font-weight: bold">for</span> item <span style="color: #AA22FF; font-weight: bold">in</span> ifcopenshell<span style="color: #666666">.</span>geom<span style="color: #666666">.</span>iterate(
+    settings, f, exclude<span style="color: #666666">=</span>[<span style="color: #BA2121">&quot;IfcSpace&quot;</span>, <span style="color: #BA2121">&quot;IfcOpeningElement&quot;</span>]
+):
+    ifcopenshell<span style="color: #666666">.</span>geom<span style="color: #666666">.</span>utils<span style="color: #666666">.</span>display_shape(item)
+ifcopenshell<span style="color: #666666">.</span>geom<span style="color: #666666">.</span>utils<span style="color: #666666">.</span>main_loop()
+</pre></div>
+                    </pre>
+                </div>
+            </div>
+            <img src="/static/ifcos-graph-1-02.svg" alt="3d-building">
+        </div>
+    </div>
+    <div class="group">
+        <h2>Frequently Asked Questions</h2>
+    <div class="section">
 <dl>
 <dt>What's with the name? Ifc Opens Hell?</dt>
 <dd>No, you're not reading it correctly. An IfcOpenShell is one of the ways geometry can be described inside an Ifc file. Since the name reflects on the Ifc part, the open source part and the geometry part of the project, we figured we'd pick this as our name.<br>PS: No, we're not called openIfcShell either</dd>
 <dt>Ok, so how do you make money with this?</dt>
 <dd>We don't. Are you? How about <a href="https://sourceforge.net/project/project_donations.php?group_id=543113">sharing some of the pie</a> or <a href="http://blog.ifcopenshell.org/2011/08/ifcopenshell-needs-your-help.html">help out with development or testing</a>!</dd>
 </dl>
+</div>
+</div>
 
 {% endblock %}

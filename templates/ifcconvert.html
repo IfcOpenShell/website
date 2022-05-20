@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+<div class='content-section'>
+
 <h2>IfcConvert: An application for converting ifc geometry into several file formats</h2>
 <h3>Installation instructions for Windows, Linux and Mac OSX</h3>
 
@@ -76,9 +79,10 @@ You can also use the <a href="https://github.com/tpaviot/oce">Open CASCADE Commu
 <ul>
 <li>You can invoke IfcConvert from the command line or drag an .ifc file over the IfcConvert executable to convert it</li>
 </ul>
-<pre>
+<h3>Command line arguments</h3>
+<pre class='listing'>
 IfcOpenShell IfcConvert 0.6.0 (OCC 7.3.0)
-Usage: IfcConvert [options] <input.ifc> [<output>]
+Usage: IfcConvert [options] &lt;input.ifc&gt; [&lt;output&gt;]
 
 Converts (the geometry in) an IFC file into one of the following formats:
   .obj   WaveFront OBJ  (a .mtl file is also created)
@@ -90,7 +94,7 @@ Converts (the geometry in) an IFC file into one of the following formats:
   .svg   SVG            Scalable Vector Graphics (2D floor plan)
   .ifc   IFC-SPF        Industry Foundation Classes
 
-If no output filename given, <input>.obj will be used as the output file.
+If no output filename given, &lt;input&gt;.obj will be used as the output file.
 
 
 Command line options:
@@ -179,8 +183,8 @@ Geometry options:
                                        assigned to presentation layers of which
                                        names match the given values should be 
                                        included.
-                                       3) 'attribute <AttributeName>': products
-                                       whose value for <AttributeName> should 
+                                       3) 'attribute &lt;AttributeName&gt;': products
+                                       whose value for &lt;AttributeName&gt; should 
                                        be included
                                        . Currently supported arguments are 
                                        GlobalId, Name, Description, and Tag.
@@ -339,5 +343,7 @@ Serialization options:
   --edge-arrows                        Adds arrow heads to edge segments to 
                                        signify edge direction
 </pre>
+
+</div>
 
 {% endblock %}

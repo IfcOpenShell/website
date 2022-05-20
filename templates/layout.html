@@ -3,54 +3,46 @@
 
 {% block head %}
 <head>
-  <meta charset="utf-8">
-
-  <title>IfcOpenShell</title>
-  <meta name="description" content="The free open source IFC geometry engine">
-  <meta name="author" content="Thomas Krijnen">
-  
-  <link rel="stylesheet" href="/static/main.css" />
-<!-- <link rel="stylesheet" href="{{ url_for('static', filename = 'static/main.css') }}" /> -->
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?Open+Sans:wght@300;500&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/main.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>IfcOpenShell</title>
 </head>
-
 {% endblock %}
 
-
-
 <body>
-{% block sous%}
-<div id='page'>
-<div id='header'>
-    <h1><a href="{{url_for('home')}}"><img src='static/ifcopenshell_logo.png' alt="IfcOpenShell logo"></a><span>IfcOpenShell</span></h1>
-    <h2>the open source ifc toolkit and geometry engine</h2>
-</div>
-<ul id='menu'>
-    <li><a {% if request.path == url_for('home') %} id="active" {% endif %} href="{{url_for('home')}}">Home</a>
-      <ul>
-        <li><a target="_blank" href="https://ifcopenshell.github.io/docs/">Docs</a></li>
-        <li><a target="_blank" href="https://github.com/IfcOpenShell/IfcOpenShell">Code</a></li>
-      </ul>
-    </li>
-    <li>Products<ul>
-        <li><a {% if request.path == url_for('max') %} id="active" {% endif %} href="{{url_for('max')}}">IfcMax</a></li>
-        <li><a {% if request.path == url_for('blender') %} id="active" {% endif %} href="{{url_for('blender')}}">IfcBlender</a></li>
-        <li><a {% if request.path == url_for('convert') %} id="active" {% endif %} href="{{url_for('convert')}}">IfcConvert</a></li>
-        <li><a {% if request.path == url_for('python') %} id="active" {% endif %} href="{{url_for('python')}}">IfcOpenShell-python</a></li>
-        <!--<li><a href="cpp.html">IfcOpenShell-C++</a></li>-->
-        <li><a {% if request.path == url_for('bimserver') %} id="active" {% endif %} href="{{url_for('bimserver')}}">BIMserver plug-in</a></li>
-        <!--<li><a href="freecad.html">FreeCAD plug-in</a></li>-->
-    </ul></li>
-    <li>Community<ul>
-        <li><a target="_blank" href="http://blog.ifcopenshell.org">Blog</a></li>
-        <li><a target="_blank" href="https://sourceforge.net/p/ifcopenshell/discussion/">Forums</a></li>
-    </ul></li>
-    <!-- <li><a {% if request.path == url_for('code') %} id="active" {% endif %} href="{{url_for('code')}}">Source code</a></li> -->
-</ul>
-<div id='alerts'>
+    <nav>
+        <div class="logo">
+            <img src="/static/ifcopenshell_logo.png" alt="ifcopenshell logo">
+        </div>   
+        <div class="menu">        
+            <a {% if request.path == url_for('home') %} class="selected" {% endif %} href="{{url_for('home')}}">home</a>
+            <a target="_blank" href="https://ifcopenshell.github.io/docs/">docs</a>
+            <a target="_blank" href="https://github.com/IfcOpenShell/IfcOpenShell">code</a>
+            <input type="checkbox" id="menu" {% if request.path in (url_for('convert'), url_for('python'), url_for('bimserver'), url_for('max'), url_for('blender')) %} checked {% endif %}>
+            <label for="menu">products</label>
+            <a target="_blank" href="http://blog.ifcopenshell.org/">blog</a>
+            <a target="_blank" href="https://sourceforge.net/p/ifcopenshell/discussion/">forums</a>
+            <div class="break"></div>
+            <div class="submenu">
+                <a target="_blank" href="https://blenderbim.org/">BlenderBIM</a>
+                <a {% if request.path == url_for('convert') %} class="selected" {% endif %} href="{{url_for('convert')}}">IfcConvert</a>
+                <a {% if request.path == url_for('python') %} class="selected" {% endif %} href="{{url_for('python')}}">IfcOpenShell-python</a>
+                <a {% if request.path == url_for('bimserver') %} class="selected" {% endif %} href="{{url_for('bimserver')}}">BIMserver plug-in</a>    
+                <a {% if request.path == url_for('max') %} class="selected" {% endif %} href="{{url_for('max')}}" style="color:#aaa">IfcMax</a>
+                <a {% if request.path == url_for('blender') %} class="selected" {% endif %} href="{{url_for('blender')}}" style="color:#aaa">IfcBlender</a>
+            </div>
+        </div>
+    </nav>
 
 {% if False %}
+<div id='alerts'>
 <div class='alert'>
 <div class='date'><span>March 21, 2017:</span></div>
 <div>
@@ -65,7 +57,6 @@
 </div>
 <br style='clear:both'>
 </div>
-{% endif %}
 
 <div class='alert'>
 <div class='date'><span>August 12, 2020:</span></div>
@@ -76,46 +67,20 @@ Available to try at <a href='https://view.ifcopenshell.org'>view.ifcopenshell.or
 </div>
 <br style='clear:both'>
 </div>
+{% endif %}
 
 </div>
 <div id='content'>
 
-<a class="github-button" href="https://github.com/IfcOpenShell/IfcOpenShell"                                    data-size="small" data-show-count="true" aria-label="Star IfcOpenShell on GitHub">Star</a>
-<a class="github-button" href="https://github.com/IfcOpenShell/IfcOpenShell/fork"   data-icon="octicon-repo-forked"  data-size="small" data-show-count="true" aria-label="Fork IfcOpenShell on GitHub">Fork</a>
-
-{% endblock %}
-
-
-
 {% block content %}
-<h2>the open source ifc toolkit and geometry engine {{a}}</h2>
-<ul>
-<!-- <li><a href="{{ url_for('convert')}}"> -->
-Home</a></li>
+
 {% endblock %}
 
-<h4>Please visit the <a href="https://sourceforge.net/p/ifcopenshell/discussion/">forums</a> for additional support</h4>
-
-<!-- and hosted at &nbsp;<a href="http://sourceforge.net/projects/ifcopenshell"><img width="80" height="15" src="http://sflogo.sourceforge.net/sflogo.php?group_id=543113&amp;type=10" alt="Get IfcOpenShell at SourceForge.net. Fast, secure and Free Open Source software downloads"></a> -->
-
-</span>
-</div>
-</div>
-</div>
-
-{% block tail %}
-<div id='tail'>
-<a href='http://archikey.com' target='_blank' id='archikey' title='Archikey.com the free on-line architecture archive'>
-<img src="static/archikey.jpg" alt="Archikey.com">
-Can't get enough of semantics in the built environment?<br>
-Visit Archikey.com, the free community-based semi-semantical architecture archive!<br style='clear:both'>
-</a>
-<a href='http://twitter.com/aothms' target='_blank' id='twitter'>
-<img src="static/twitter.png" alt="Follow IfcOpenShell on twitter">
-Comments? Suggestions? Feature requests? Just plain angry with the world?<br>
-Follow the development of IfcOpenShell on twitter (@aothms)
-</a>
-</div>
-{% endblock %}
+    <a href='https://twitter.com/aothms' id='twitter'>
+        <span>
+        <img src='/static/twitter.svg'>
+        </span><br>
+        follow the<br>development<br>on twitter
+    </a>
 </body>
 </html>
