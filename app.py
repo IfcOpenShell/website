@@ -34,8 +34,9 @@ def blender():
 def convert():
     dico_master = builds.get("IfcConvert", "master")
     dico_v6 = builds.get("IfcConvert", "v0.6.0")
+    dico_v7 = builds.get('IfcConvert','v0.7.0')
     return render_template(
-        "ifcconvert.html", builds_master=dico_master, builds_v06=dico_v6
+        "ifcconvert.html", builds_master=dico_master, builds_v06=dico_v6, dict_v7=dico_v7
     )
 
 
@@ -43,7 +44,8 @@ def convert():
 def python():
     dico_master = builds.get("ifcopenshell-python", "master")
     dico_v6 = builds.get("ifcopenshell-python", "v0.6.0")
-    return render_template("python.html", builds_master=dico_master, builds_v06=dico_v6)
+    dict_v7 = builds.get('ifcopenshell-python','v0.7.0')
+    return render_template("python.html", builds_master=dico_master, builds_v06=dico_v6, dict_v7=dict_v7)
 
 
 @app.route("/code")
