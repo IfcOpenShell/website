@@ -21,6 +21,15 @@
         <div class="logo">
             <img src="/static/ifcopenshell_logo.png" alt="ifcopenshell logo">
         </div>   
+        <div class="funding"><a href='https://opencollective.com/opensourcebim' target='_blank'>Support the development on Open Collective</a><div class="progress-bar"><div>estimated monthly</div></div></div>
+        <script>
+            fetch('https://opencollective.com/opensourcebim.json').then(r => r.json()).then(d => { 
+                let monthly = d.yearlyIncome / 12 / 100.;
+                let div = document.querySelector('.progress-bar div')
+                div.style.width = (monthly / 5) + '%'; 
+                div.innerText = `$ ${monthly.toFixed(2)} / month`;
+            });
+        </script>
         <div class="menu">        
             <a {% if request.path == url_for('home') %} class="selected" {% endif %} href="{{url_for('home')}}">home</a>
             <a target="_blank" href="https://ifcopenshell.github.io/docs/">docs</a>

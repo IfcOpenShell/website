@@ -391,3 +391,39 @@ p.tagline {
     padding: 10vh 30vh;
     font-size: 1.5em;
 }
+
+
+.progress-bar {
+    width: 20vw;
+    height: 2em;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+    overflow: hidden;
+    font-size: 1em;
+    line-height: 2em;
+}
+
+.progress-bar div {
+    height: 100%;
+    width: 0%;
+    background-color: #FFBC2C;
+    z-index: -100;
+    position: relative;
+    border-right: solid 1px #ddd;
+    color: white;
+}
+
+.funding {
+    margin: 0.5em 2em 0 auto;
+}
+
+.funding a {
+    color: #444;
+    text-decoration: none;
+}
+
+.funding a:hover {
+    color: #888;
+    text-decoration: underline;
+}
