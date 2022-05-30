@@ -11,6 +11,22 @@
 <li>Determine if your operating system is 32bit or 64bit</li>
 <li>Download and unzip the appropriate version of IfcConvert
 
+<li style='list-style-type:none'>0.7.0 latest</li>
+<ul>
+<li style='list-style-type:none'><b>Windows</b></li>
+{% for t in dict_v7['Windows'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+<li style='list-style-type:none'><b>Mac OSX</b></li>
+{% for t in dict_v7['OSX'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+<li style='list-style-type:none'><b>Linux</b></li>
+{% for t in dict_v7['Linux'] %}
+<li><a href="{{t[0]}}">{{t[1]}}</a></li>
+{% endfor %}
+</ul></li>
+
 <li style='list-style-type:none'>0.6.0 latest</li>
 <ul>
 <li style='list-style-type:none'><b>Windows</b></li>
