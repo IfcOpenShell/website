@@ -325,7 +325,8 @@ $ <span class="green-color">ifcclash</span> -o results.json clashsets.json
                     <div class="partners-logo tier3">
                         {% for donor in tier3 %}
                         <a href="{{ donor.url }}" style="margin-right: 10px;">
-                            {{ donor.name }}
+                            <img src="{{ donor.avatar }}" title="{{ donor.name }}" class="wow fadeInUp delay-0-2s" />
+                            
                         </a>
                         {% endfor %}
                     </div>
