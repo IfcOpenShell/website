@@ -1368,7 +1368,7 @@
  .blender-slider {
     position: relative;
     overflow: visible;
-    padding-bottom:80px;
+    padding-bottom: 50px;
     background: #2e3436 url('../images/blender/blender-slider.jpg') repeat-x center top !important;
 }
  .blender-slider .sub-heading {
@@ -1491,7 +1491,7 @@
     position: absolute;
     z-index: 9990;
     top: -100px;
-    right: 0;
+    right: 20px;
 }
 /* Blender Page */
 /* .community page */
