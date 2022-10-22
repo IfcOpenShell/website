@@ -55,6 +55,9 @@
  .banner-section .side-border-inner {
      margin-right: -20px;
  }
+ .blender-logo-section .side-border {
+     margin-right: 20px;
+ }
 	 .banner-content .up-title br {
 		 display: none;
 	}
@@ -112,6 +115,15 @@
           top: -180px;
       }
 
+	  .image-section-1 .bg-images-1, .image-section-1 .bg-images-2 {
+          width: 300px;
+      }
+
+     .blender-page-slider-section .banner-image-small {
+         left: -45px;
+         height: 100px;
+     }
+
 	/* banner Style */
 	 .banner-section {
 		 padding-top: 30px;
@@ -163,7 +175,7 @@
 }
  @media only screen and (max-width: 575px) {
      .image-section-1 .text-bottom, .image-section-1 .text-top {
-         font-size: 22px;
-		 line-height: 65px;
+         font-size: 14px;
+		 line-height: 30px;
     }
 }
