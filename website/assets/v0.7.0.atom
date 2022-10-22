@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/IfcOpenShell/IfcOpenShell/commits/v0.7.0</id>
+  <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commits/v0.7.0"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/IfcOpenShell/IfcOpenShell/commits/v0.7.0.atom"/>
+  <title>Recent Commits to IfcOpenShell:v0.7.0</title>
+  <updated>2022-10-19T06:54:25Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ec955ca7173a8c175576d03bf3dcba97cfb144f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/ec955ca7173a8c175576d03bf3dcba97cfb144f9"/>
+    <title>
+        You can now draw walls at a set RL
+    </title>
+    <updated>2022-10-19T06:54:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;You can now draw walls at a set RL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9c28a95f41ae0466ba944db467b0c6ba48cdea8e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/9c28a95f41ae0466ba944db467b0c6ba48cdea8e"/>
+    <title>
+        Fix #2416.
+    </title>
+    <updated>2022-10-19T01:44:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix #2416.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80020970e19944b9e632002822d7db78fcd3af6f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/80020970e19944b9e632002822d7db78fcd3af6f"/>
+    <title>
+        Purge old dynamic void system as Blender booleans are not sufficient.
+    </title>
+    <updated>2022-10-19T01:32:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Purge old dynamic void system as Blender booleans are not sufficient.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f55b47dcb3dec68bb525fb734aa6ac6bb11712a3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/f55b47dcb3dec68bb525fb734aa6ac6bb11712a3"/>
+    <title>
+        Include sample file generator in IfcTester doc generator
+    </title>
+    <updated>2022-10-19T00:54:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Include sample file generator in IfcTester doc generator&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7197db796cf0034590c3a4914b57f1e1c2ff9849</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/7197db796cf0034590c3a4914b57f1e1c2ff9849"/>
+    <title>
+        Fix #2508
+    </title>
+    <updated>2022-10-18T22:48:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix #2508&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a5aa970977b03bd1e4b88f6de948a8121619ddd6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/a5aa970977b03bd1e4b88f6de948a8121619ddd6"/>
+    <title>
+        Add support for normalised ratio diffuse colours. See #2509.
+    </title>
+    <updated>2022-10-18T22:37:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add support for normalised ratio diffuse colours. See #2509.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/159e2ca779494f28f67f12abc828b66a84a3f753</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/159e2ca779494f28f67f12abc828b66a84a3f753"/>
+    <title>
+        Run black and minor fix. See #1990.
+    </title>
+    <updated>2022-10-18T22:17:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Run black and minor fix. See #1990.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ec1fbabd00c3ff5fd3c81891a66eed889182f51c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/ec1fbabd00c3ff5fd3c81891a66eed889182f51c"/>
+    <title>
+        Dynamic Attribute Info (#1990)
+    </title>
+    <updated>2022-10-18T21:17:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/25156105?s=30&amp;v=4"/>
+    <author>
+      <name>Gorgious56</name>
+      <uri>https://github.com/Gorgious56</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dynamic Attribute Info (#1990)
+
+* Add info mode toggle in addon prefs
+
+* Add documentation property to Attribute
+
+* Add webbrowser open operator
+
+* Populate attribute doc on import
+
+* Add attribute doc popup operator
+
+* use path_resolve instead of eval
+
+* Rename operator
+
+* Add description field
+
+* Panel UI is managed by operator
+
+* Revert &amp;quot;Panel UI is managed by operator&amp;quot;
+
+This reverts commit a7bbd06865250fa502506a84cc486fede5ff3bed.
+
+* Revert &amp;quot;Revert &amp;quot;Panel UI is managed by operator&amp;quot;&amp;quot;
+
+This reverts commit d62115bf632df8988fafaea4bc1c6af1f9169e8a.
+
+* Add info popup to ifc class panel in object properties
+
+* Implement fetching doc for non-ifc classes from jsonlike format
+
+* Draw doc from non ifc classes
+
+* Add utility function to draw info button on a given layout
+
+* Add info buttons in the create project UI
+
+* Display entity descriptions as tooltips in enum items
+
+* Move predefined types fetching to data class
+
+* Remove leftover prop code
+
+* Use tool to get schema&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b70bf5ed3361ea097ade3caf1da62c269da8a5cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/b70bf5ed3361ea097ade3caf1da62c269da8a5cf"/>
+    <title>
+        Cute developer function to spit out a debug object to help when coding.
+    </title>
+    <updated>2022-10-18T12:11:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Cute developer function to spit out a debug object to help when coding.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d6be887bde798d859a51330c323d8ca9a605af68</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/d6be887bde798d859a51330c323d8ca9a605af68"/>
+    <title>
+        Minor IfcTester test case fixes
+    </title>
+    <updated>2022-10-18T12:11:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Minor IfcTester test case fixes&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6098d9422354fdb553e38598f403ca58c7e07cbd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/6098d9422354fdb553e38598f403ca58c7e07cbd"/>
+    <title>
+        Fix #2507.
+    </title>
+    <updated>2022-10-18T11:47:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix #2507.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f045e86a38b0fc30122e5c2fd057fe941c8fddd1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/f045e86a38b0fc30122e5c2fd057fe941c8fddd1"/>
+    <title>
+        Rebuild wall engine (again) to allow for sloped wall clippings.
+    </title>
+    <updated>2022-10-18T09:02:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rebuild wall engine (again) to allow for sloped wall clippings.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ef65c9cc5b609697e51e691774666fd9f2a3e33</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/9ef65c9cc5b609697e51e691774666fd9f2a3e33"/>
+    <title>
+        Add basic support for sloped walls, sloping along the local X axis
+    </title>
+    <updated>2022-10-17T11:52:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add basic support for sloped walls, sloping along the local X axis&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8a82504292be2221a86930fee9bf0c0b5826236</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/f8a82504292be2221a86930fee9bf0c0b5826236"/>
+    <title>
+        searching for an IfcMaterial in IfcMaterialDefinitions (#2503)
+    </title>
+    <updated>2022-10-17T09:24:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/507113?s=30&amp;v=4"/>
+    <author>
+      <name>theoryshaw</name>
+      <uri>https://github.com/theoryshaw</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;searching for an IfcMaterial in IfcMaterialDefinitions (#2503)
+
+* searching for an IfcMaterial in IfcMaterialDefinitions
+A start to trying to address: https://community.osarch.org/discussion/comment/13024/#Comment_13024
+
+* refactored to a tighter version. Thanks Thomas.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a75341b36eb3a2ceae74ab8ad00e06c4c6b2fd60</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/a75341b36eb3a2ceae74ab8ad00e06c4c6b2fd60"/>
+    <title>
+        Fix #2505. Missing rotate button in UI.
+    </title>
+    <updated>2022-10-17T09:11:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix #2505. Missing rotate button in UI.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0a0271a30e98216b450bd1b77acf0b113b9dfefe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/0a0271a30e98216b450bd1b77acf0b113b9dfefe"/>
+    <title>
+        Filled openings can now be based off a custom profile representation
+    </title>
+    <updated>2022-10-17T07:34:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Filled openings can now be based off a custom profile representation&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/871f6ebdf1fb67fc7dd5755cfca8690b24285418</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/871f6ebdf1fb67fc7dd5755cfca8690b24285418"/>
+    <title>
+        Updated windows batch script for setting up environment for blenderbim
+    </title>
+    <updated>2022-10-17T06:19:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/9417531?s=30&amp;v=4"/>
+    <author>
+      <name>Andrej730</name>
+      <uri>https://github.com/Andrej730</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Updated windows batch script for setting up environment for blenderbim
+
+Previous batch scripts was resulting in broken sym links (probably because mklink and some other comands were expecting full paths). New script provide required full paths and also use 1 line to set up blenderbim location.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/90f1a179bc55d1a626abdf48d1c422305ff08c0c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/90f1a179bc55d1a626abdf48d1c422305ff08c0c"/>
+    <title>
+        You can now flip the direction of doors and windows
+    </title>
+    <updated>2022-10-16T12:50:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;You can now flip the direction of doors and windows&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/81d80ee415c6b218551c9db9656d6d7ae99cf5fb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/81d80ee415c6b218551c9db9656d6d7ae99cf5fb"/>
+    <title>
+        Doc API is now accessible without setting up DocAPI class
+    </title>
+    <updated>2022-10-16T10:54:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/9417531?s=30&amp;v=4"/>
+    <author>
+      <name>Andrej730</name>
+      <uri>https://github.com/Andrej730</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Doc API is now accessible without setting up DocAPI class
+
+Now you can access Doc API functions directly (like `ifcopenshell.util.doc.get_entity_doc(...)`) without setting up DocAPI class.
+To make it work I&amp;#39;ve set up singleton DocDatabase class and made all paths relative to module location.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1eeb820d262880179c9a466207344b38dd97e8cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IfcOpenShell/IfcOpenShell/commit/1eeb820d262880179c9a466207344b38dd97e8cf"/>
+    <title>
+        Flipping walls with fillings now works. See #2491.
+    </title>
+    <updated>2022-10-16T10:05:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/88302?s=30&amp;v=4"/>
+    <author>
+      <name>Moult</name>
+      <uri>https://github.com/Moult</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Flipping walls with fillings now works. See #2491.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

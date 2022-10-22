@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="assets/css/normalize.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/icofont.min.css">
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        {% if brand == "ifcopenshell" %}
+        <link rel="icon" type="image/png" href="assets/images/favicon.png">
+        {% elif brand == "blenderbim" %}
+        <link rel="icon" type="image/png" href="assets/images/favicon-blender.png" />
+        {% endif %}
+        <title>{{ title }}</title>
+    </head>
+    <body class="home-page">
+        <!--=== Start Header Section ===-->
+        <header class="header-section">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        {% if brand == "ifcopenshell" %}
+                        <img src="assets/images/logo.png" alt="Logo">
+                        {% elif brand == "blenderbim" %}
+                        <img src="assets/images/blender/blender-logo.png" alt="Logo">
+                        {% endif %}
+                    </a>
+                    <a href="javascript:void(0);" class="mobile-menu">
+                        <div class="mobile-menu-btn">
+                            <i class="icofont-lg icofont-navigation-menu"></i>
+                        </div>
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            {% if brand == "ifcopenshell" %}
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link{% if page == "index" %} active{% endif %}">home<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="downloads.html" class="nav-link{% if page == "downloads" %} active{% endif %}">downloads<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="http://blog.ifcopenshell.org" class="nav-link">blog<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://blenderbim.org/docs-python" class="nav-link">documentation<span></span></a>
+                            </li>
+                            {% elif brand == "blenderbim" %}
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link{% if page == "blender" %} active{% endif %}">home<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="download.html" class="nav-link{% if page == "download" %} active{% endif %}">download<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="community.html" class="nav-link{% if page == "community" %} active{% endif %}">community<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://blenderbim.org/docs" class="nav-link">documentation<span></span></a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        <div class="menu-right-options ms-auto">
+                            <p>
+                                <strong class="amount-raised" style="margin-right: 5px;">$</strong> / $500 funded
+                                <a href="https://opencollective.com/opensourcebim">
+                                <span class="border-1">
+                                    <span class="progress-bar" id="progress-bar" data-status="0%" aria-label="Progress bar."></span>
+                                </span>
+                                </a>
+                            </p>
+                            <ul class="social-media-links">
+                                {% if brand == "blenderbim" %}
+                                <li>
+                                    <a href="https://twitter.com/aothms" target="_blank" class="btn btn-primary">
+                                        <i class="icofont-twitter"></i>
+                                    </a>
+                                </li>
+                                {% elif brand == "blenderbim" %}
+                                <li>
+                                    <a href="https://twitter.com/BlenderBIM" target="_blank" class="btn btn-primary">
+                                        <i class="icofont-twitter"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                <li class="github-icon">
+                                    <a href="https://github.com/ifcopenshell/ifcopenshell" target="_blank" class="">Github Icon</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!--=== Start Menu Slide Bar ===-->
+        <aside class="menu-slide-bar">
+            <div class="close-mobile-menu">
+                <div class="mobile-logo">
+                    <a href="index.html" class="mobile-logo">
+                        {% if brand == "ifcopenshell" %}
+                        <img src="assets/images/logo.png" alt="Logo">
+                        {% elif brand == "blenderbim" %}
+                        <img src="assets/images/blender/blender-logo.png" alt="Logo">
+                        {% endif %}
+                    </a>
+                </div>
+                <a href="javascript:void(0);" class="close-btn">
+                    <i class="icofont-close-line"></i>
+                </a>
+            </div>
+            <nav class="side-mobile-menu">
+                <ul id="mobile-menu-active">
+                    {% if brand == "ifcopenshell" %}
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link{% if page == "index" %} active{% endif %}">home<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="downloads.html" class="nav-link{% if page == "downloads" %} active{% endif %}">downloads<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://blog.ifcopenshell.org" class="nav-link">blog<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://blenderbim.org/docs-python" class="nav-link">documentation<span></span></a>
+                    </li>
+                    {% elif brand == "blenderbim" %}
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link{% if page == "blender" %} active{% endif %}">home<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="download.html" class="nav-link{% if page == "download" %} active{% endif %}">download<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="community.html" class="nav-link{% if page == "community" %} active{% endif %}">community<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://blenderbim.org/docs" class="nav-link">documentation<span></span></a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </aside>
+        <div class="body-overlay"></div>
+        <!--=== End Menu Slide Bar ===-->
