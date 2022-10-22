@@ -1261,6 +1261,7 @@
 /* .logo-section */
 /* .product-section */
  .product-section-1.blender-slider {
+     overflow: hidden;
     padding-top: 10px;
 }
  .product-section-1 {
@@ -1470,14 +1471,13 @@
     overflow: visible;
 }
  .blender-logo-section ul.blender-logos {
-    margin-bottom: 30px;
+    margin: 0px;
+    padding: 0px;
 }
  .blender-logo-section ul.blender-logos li {
     list-style: none;
     list-style-type: none;
     display: inline-block;
-}
- .blender-logo-section ul.blender-logos li img {
 }
  .blender-logo-section .side-border {
     width: 20px;

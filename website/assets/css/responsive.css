@@ -4,7 +4,7 @@
 	}
 	 .image-section-1 .text-bottom, .image-section-1 .text-top {
          font-size: 16px;
-		 line-height: 40px;
+         line-height: 40px;
 	}
 	 .started-section h3 {
 		 margin-left: 0px;
@@ -35,8 +35,8 @@
          display: block;
      }
       .image-section-1 .text-bottom, .image-section-1 .text-top {
-         font-size: 22px;
-		 line-height: 60px;
+          font-size: 14px;
+          line-height: 30px;
 	 }
 	  .image-section-1 .bg-images-2 {
           top: -80px;
@@ -58,6 +58,9 @@
  .blender-logo-section .side-border {
      margin-right: 20px;
  }
+ .blender-logo-section ul.blender-logos li img {
+     max-height: 80px;
+}
 	 .banner-content .up-title br {
 		 display: none;
 	}
