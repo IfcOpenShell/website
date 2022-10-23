@@ -1,0 +1,26 @@
+name: publish
+
+on: push
+
+jobs:
+  publish_websites:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: build
+        working-directory: ./website
+        run: |
+          apt install python3-pip
+          pip3 install requests Jinja2
+          git config --global user.name 'IfcOpenBot'
+          git config --global user.email 'IfcOpenBot@users.noreply.github.com'
+          git clone https://github.com/IfcOpenShell/blenderbim_org_static_html
+          git clone https://github.com/IfcOpenShell/ifcopenshell_org_static_html
+          python3 website.py
+          git -C blenderbim_org_static_html add .
+          git -C commit -m "$(git log --oneline -1)"
+          git -C push
+          git -C ifcopenshell_org_static_html add .
+          git -C commit -m "$(git log --oneline -1)"
+          git -C push

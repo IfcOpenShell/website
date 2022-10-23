@@ -1,10 +1,12 @@
+import os
+import shutil
 import requests
 from jinja2 import Environment, FileSystemLoader
 
+osc_apikey = os.environ["OSC_APIKEY"]
+gh_apikey = os.environ["GH_APIKEY"]
 
 def get_contributors():
-    osc_apikey = "OSC_APIKEY"
-    gh_apikey = "GH_APIKEY"
 
     tier1 = []
     tier2 = []
@@ -65,7 +67,7 @@ def get_contributors():
             f"https://api.github.com/repos/ifcopenshell/ifcopenshell/contributors?page={page}&per_page=100",
             headers={
                 "Accept": "application/vnd.github+json",
-                "Authorization": f"Bearer {gp_apikey}",
+                "Authorization": f"Bearer {gh_apikey}",
             },
         ).json()
         page += 1
@@ -101,18 +103,18 @@ pages = {
 }
 
 environment = Environment(loader=FileSystemLoader("templates/"))
-# Choose which brand here
-brand = "ifcopenshell"
-#brand = "blenderbim"
 
-for page, title in pages[brand].items():
-    template = environment.get_template(f"{page}.html")
-    filename = f"{page}.html"
-    extra = {}
-    if brand == "ifcopenshell" and page == "index":
-        extra = get_contributors()
-    elif brand == "blenderbim" and page == "blender":
-        filename = "index.html"
-    content = template.render(brand=brand, page=page, title=title, **extra)
-    with open(filename, mode="w", encoding="utf-8") as f:
-        f.write(content)
+for brand, content in pages.items():
+    os.makedirs(f"{brand}_org_static_html", exist_ok=True)
+    shutil.copytree("assets", f"{brand}_org_static_html/assets",dirs_exist_ok=True)
+    for page, title in content.items():
+        template = environment.get_template(f"{page}.html")
+        filename = f"{page}.html"
+        extra = {}
+        if brand == "ifcopenshell" and page == "index":
+            extra = get_contributors()
+        elif brand == "blenderbim" and page == "blender":
+            filename = "index.html"
+        content = template.render(brand=brand, page=page, title=title, **extra)
+        with open(f"{brand}_org_static_html/{filename}", mode="w", encoding="utf-8") as f:
+            f.write(content)

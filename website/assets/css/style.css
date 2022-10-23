@@ -862,12 +862,13 @@
  .banner-section .side-border-inner {
     width: 20px;
     border-radius: 50px;
-    height: 80px;
+    height: 480px;
     display: block;
     background: rgb(60,181,73);
     background: linear-gradient(0deg, rgba(60,181,73,1) 0%, rgba(241,237,49,1) 100%);
     float: left;
     margin-right: 20px;
+    margin-bottom: -400px;
 }
  .choose-section .side-border {
     width: 20px;
@@ -1314,13 +1315,12 @@
     position: relative;
     overflow: visible;
 }
- .product-section-1 .desing-3 {
+ .desing-3 {
     position: absolute;
-    top: -131px;
     right: 0%;
     z-index: 9990;
 }
- .product-section-1 .desing-4 {
+ .desing-4 {
     position: absolute;
     bottom: -115px;
     right: 0%;
@@ -1762,4 +1762,6 @@
     background: rgb(228,229,36);
     background: linear-gradient(90deg, rgba(228,229,36,1) 0%, rgba(252,238,33,1) 100%);
 }
-
+h2 {
+    margin: 1em 0;
+}
