@@ -65,7 +65,7 @@ def get_contributors():
             f"https://api.github.com/repos/ifcopenshell/ifcopenshell/contributors?page={page}&per_page=100",
             headers={
                 "Accept": "application/vnd.github+json",
-                "Authorization": f"Bearer {gp_apikey}",
+                "Authorization": f"Bearer {gh_apikey}",
             },
         ).json()
         page += 1
