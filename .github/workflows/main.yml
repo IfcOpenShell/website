@@ -8,8 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: build
-        working-directory: ./website
+      - working-directory: ./website
         run: |
           apt install python3-pip
           pip3 install requests Jinja2
