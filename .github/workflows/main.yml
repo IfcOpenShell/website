@@ -10,7 +10,7 @@ jobs:
 
       - working-directory: ./website
         run: |
-          apt install python3-pip
+          sudo apt update && sudo apt install -y python3-pip
           pip3 install requests Jinja2
           git config --global user.name 'IfcOpenBot'
           git config --global user.email 'IfcOpenBot@users.noreply.github.com'
