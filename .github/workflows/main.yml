@@ -21,8 +21,8 @@ jobs:
           git clone https://github.com/IfcOpenShell/ifcopenshell_org_static_html
           python3 website.py
           git -C blenderbim_org_static_html add .
-          git -C commit -m "$(git log --oneline -1)"
-          git -C push
+          git -C blenderbim_org_static_html commit -m "$(git log --oneline -1)"
+          git -C blenderbim_org_static_html push
           git -C ifcopenshell_org_static_html add .
-          git -C commit -m "$(git log --oneline -1)"
-          git -C push
+          git -C ifcopenshell_org_static_html commit -m "$(git log --oneline -1)"
+          git -C ifcopenshell_org_static_html push
