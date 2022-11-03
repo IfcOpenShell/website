@@ -89,7 +89,7 @@
             margin: 10,
             callbacks: true,
             URLhashListener: true,
-            autoplay: false,
+            autoplay: true,
             autoplayTimeout: 3000,
             autoplayHoverPause: true,
             // startPosition: 'URLHash'

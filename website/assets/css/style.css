@@ -109,6 +109,9 @@
  .bg-color-fff1f2 {
     background-color: #eeeeec;
 }
+ .bg-color-light {
+    background-color: #f7f7f6;
+}
  .bg-color-2e3436 {
     background-color: #2e3436;
 }
@@ -862,13 +865,12 @@
  .banner-section .side-border-inner {
     width: 20px;
     border-radius: 50px;
-    height: 480px;
+    height: 80px;
     display: block;
     background: rgb(60,181,73);
     background: linear-gradient(0deg, rgba(60,181,73,1) 0%, rgba(241,237,49,1) 100%);
     float: left;
     margin-right: 20px;
-    margin-bottom: -400px;
 }
  .choose-section .side-border {
     width: 20px;
@@ -1286,6 +1288,9 @@
  .product-section-1 p {
     color: #fff;
 }
+ .product-section-1-light p {
+    color: #2e3436;
+}
  .product-section-1 h2 {
     font-size: 42px;
     line-height: 60px;
@@ -1304,6 +1309,9 @@
     border-radius: 20px;
     margin: 0 auto 30px;
 }
+ .product-section-1-light .inner-divider {
+    background: #babdb6;
+ }
  .product-section-1 .main-btn {
     color: #fff;
     background: #40b74c 
@@ -1315,12 +1323,12 @@
     position: relative;
     overflow: visible;
 }
- .desing-3 {
+ .product-section-1 .desing-3 {
     position: absolute;
     right: 0%;
     z-index: 9990;
 }
- .desing-4 {
+ .product-section-1 .desing-4 {
     position: absolute;
     bottom: -115px;
     right: 0%;
@@ -1761,7 +1769,4 @@
 .color-4 {
     background: rgb(228,229,36);
     background: linear-gradient(90deg, rgba(228,229,36,1) 0%, rgba(252,238,33,1) 100%);
-}
-h2 {
-    margin: 1em 0;
 }
