@@ -50,8 +50,9 @@ def get_contributors():
         results = requests.post(
             endpoint, json={"query": query, "variables": {"slug": slug}}, headers={"Api-Key": osc_apikey}
         ).json()
-    
-        for result in results["data"]["account"]["members"]["nodes"]:
+        
+        nodes = results["data"]["account"]["members"]["nodes"]
+        def make_dict(result):
             slug = result["account"]["slug"]
             di = {
                 "name": result["account"]["name"],
@@ -60,6 +61,11 @@ def get_contributors():
                 "type": "donor",
                 "amount": result["totalDonations"]["value"],
             }
+            return slug, di
+        
+        # Seems like some members are mentioned multiple times, with indentical
+        # data, folding data based on slug eliminates these duplicates.
+        for slug, di in dict(map(make_dict, nodes)).items():
             if slug in dicts:
                 dicts[slug]['amount'] += di['amount']
             else:
