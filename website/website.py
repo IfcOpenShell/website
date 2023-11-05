@@ -1,5 +1,7 @@
 import os
 import shutil
+import operator
+
 import requests
 from jinja2 import Environment, FileSystemLoader
 
@@ -36,29 +38,40 @@ def get_contributors():
       }
     }
     """
+    
+    # @todo We can get the github contribution link from the opencollective profile
+    # to sum financial and code contributions.
+    
+    # @todo Add a little tag on the avator to indicate [$] or [</>] and maybe a tooltip
+    # to provide a textual summary of the provided contribution.
 
-    results = requests.post(
-        endpoint, json={"query": query, "variables": {"slug": "opensourcebim"}}, headers={"Api-Key": osc_apikey}
-    ).json()
-    totalContributors = results["data"]["account"]["members"]["totalCount"]
-    names = set()
-    for result in sorted(results["data"]["account"]["members"]["nodes"], key=lambda m: m["totalDonations"]["value"])[::-1]:
-        data = {
-            "name": result["account"]["name"],
-            "avatar": result["account"]["imageUrl"],
-            "url": "https://opencollective.com/" + result["account"]["slug"],
-            "type": "donor",
-            "amount": result["totalDonations"]["value"],
-        }
-        if data["name"] in names:
-            continue  # Seems like some members are mentioned multiple times
+    dicts = {}
+    for slug in ["opensourcebim", "apple-m1-build-server", "full-infra-geom-implementation"]:
+        results = requests.post(
+            endpoint, json={"query": query, "variables": {"slug": slug}}, headers={"Api-Key": osc_apikey}
+        ).json()
+    
+        for result in results["data"]["account"]["members"]["nodes"]:
+            slug = result["account"]["slug"]
+            di = {
+                "name": result["account"]["name"],
+                "avatar": result["account"]["imageUrl"],
+                "url": "https://opencollective.com/" + result["account"]["slug"],
+                "type": "donor",
+                "amount": result["totalDonations"]["value"],
+            }
+            if slug in dicts:
+                dicts[slug]['amount'] += di['amount']
+            else:
+                dicts[slug] = di
+        
+    for data in sorted(dicts.values(), key=operator.itemgetter('amount'), reverse=True):
         if data["amount"] >= 500:
             tier1.append(data)
         elif data["amount"] >= 250:
             tier2.append(data)
         else:
             tier3.append(data)
-        names.add(data["name"])
 
     # Devs are contributors too!
     page = 1
@@ -87,6 +100,7 @@ def get_contributors():
                 tier2.append(data)
             else:
                 tier3.append(data)
+
     return {"tier1": tier1, "tier2": tier2, "tier3": tier3}
 
 
