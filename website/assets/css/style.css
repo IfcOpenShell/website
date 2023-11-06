@@ -1241,6 +1241,11 @@
     display: inline-block;
     width: 160px;
     margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+ .logo-section .partners-logo div a {
+    white-space: nowrap;
 }
  .logo-section .partners-logo.tier1 img {
     border-radius: 5px;
