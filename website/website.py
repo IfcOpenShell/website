@@ -20,7 +20,7 @@ def get_contributors():
       account(slug: $slug) {
         name
         slug
-        members(limit: 100) {
+        members(limit: 1000) {
           totalCount
           nodes {
             totalDonations {
