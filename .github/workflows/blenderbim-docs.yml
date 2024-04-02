@@ -1,0 +1,25 @@
+name: blenderbim-docs
+on:
+  workflow_dispatch:
+jobs:
+  blenderbim-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - working-directory: ./
+        env:
+          GH_APIKEY: ${{ secrets.GH_APIKEY }}
+        run: |
+          sudo apt update && sudo apt install -y python3-pip
+          pip3 install furo sphinx-autoapi sphinx-copybutton
+          git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/IfcOpenShell
+          cd IfcOpenShell/src/blenderbim/docs && make html
+          git config --global user.name 'IfcOpenBot'
+          git config --global user.email 'IfcOpenBot@users.noreply.github.com'
+          git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/blenderbim_org_docs
+          rm -rf blenderbim_org_docs/*
+          cp -r IfcOpenShell/src/blenderbim/docs/_build/html/* blenderbim_org_docs/
+          git -C blenderbim_org_docs add .
+          git -C blenderbim_org_docs commit -m "Build"
+          git -C blenderbim_org_docs push
