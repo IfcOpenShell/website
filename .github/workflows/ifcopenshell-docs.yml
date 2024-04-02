@@ -1,0 +1,27 @@
+name: ifcopenshell-docs
+on:
+  workflow_dispatch:
+jobs:
+  ifcopenshell-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - working-directory: ./
+        env:
+          GH_APIKEY: ${{ secrets.GH_APIKEY }}
+        run: |
+          sudo apt update && sudo apt install -y python3-pip
+          pip3 install furo sphinx-autoapi sphinx-copybutton
+          git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/IfcOpenShell
+          cd IfcOpenShell/src/ifcopenshell-python/docs
+          make html
+          git config --global user.name 'IfcOpenBot'
+          git config --global user.email 'IfcOpenBot@users.noreply.github.com'
+          git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/ifcopenshell_org_docs
+          rm -rf ifcopenshell_org_docs/*
+          cp -r _build/html/* ifcopenshell_org_docs/
+          touch ifcopenshell_org_docs/.nojekyll
+          git -C ifcopenshell_org_docs add .
+          git -C ifcopenshell_org_docs commit -m "Build"
+          git -C ifcopenshell_org_docs push
