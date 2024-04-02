@@ -21,6 +21,7 @@ jobs:
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/blenderbim_org_docs
           rm -rf blenderbim_org_docs/*
           cp -r _build/html/* blenderbim_org_docs/
+          touch blenderbim_org_docs/.nojekyll
           git -C blenderbim_org_docs add .
           git -C blenderbim_org_docs commit -m "Build"
           git -C blenderbim_org_docs push
