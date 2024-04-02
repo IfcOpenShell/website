@@ -1530,6 +1530,7 @@
     float: left;
     margin-right: 15px;
     margin-top: 10px;
+    max-width: 30px;
 }
  .sidebar-section ul.latest-code li .post-date {
     color: #bbbbbb;
