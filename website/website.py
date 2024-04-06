@@ -129,8 +129,6 @@ environment = Environment(loader=FileSystemLoader("templates/"))
 for brand, content in pages.items():
     os.makedirs(f"{brand}_org_static_html", exist_ok=True)
     shutil.copytree("assets", f"{brand}_org_static_html/assets", dirs_exist_ok=True)
-    if brand == "blenderbim":
-        shutil.copytree("blenderbim", f"{brand}_org_static_html", dirs_exist_ok=True)
     for page, title in content.items():
         template = environment.get_template(f"{page}.html")
         filename = f"{page}.html"
