@@ -1,0 +1,209 @@
+{% include "header.html" %}
+        <!--=== Start Banner Section ===-->
+        <section class="bg-color-fff1f2">
+            <div class="container community-header">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="banner-section">
+                            <div class="side-border side-border-inner wow fadeInUp delay-0-4s"></div>
+                            <div class="banner-content">
+                                <h1 class="wow fadeInUp delay-0-2s"> Which IFC class should I use? </h1>
+                                <h2 class="up-title wow fadeInUp delay-0-4s"> Find an IFC entity </h2>
+                            </div>
+                        </div>
+
+<style>
+ul ul {
+    list-style-type: none;
+    margin-bottom: 1rem;
+}
+.highlight {
+    background-color: #ffd043;
+}
+#search-query, #search-schema {
+    border-radius: 5px;
+    border: 1px solid #74c77b;
+    padding: 5px;
+    background-color: #fff;
+    height: 50px;
+}
+#search-query {
+    width: 20rem;
+}
+</style>
+
+<section class="row">
+    <p>
+        Physical objects in an IFC file must be categorised to a <em>class</em>
+        of object, which has implications on what properties are expected to be
+        found on the object. For example, a wall has an IFC <em>class</em> of
+        <code>IfcWall</code>. If your BIM model has missing or incorrect
+        <em>class</em> categorisations, then your BIM model becomes difficult
+        to use for costing, sustainability quantification, automated
+        scheduling, filtering maintainable assets for facility management, and
+        more.
+    </p>
+    <p>
+        The <em>classes</em> available for you to use are different for
+        each IFC version. In general, more recent IFC versions have more classes.
+        This tool below lets you type what type of object you have, and
+        it will try and find the right IFC <em>class</em> for you.
+    </p>
+    <p>
+        <select class="u-full-width" type="text" id="search-schema">
+            <option value="IFC2X3">IFC2X3</option>
+            <option value="IFC4" selected>IFC4</option>
+            <option value="IFC4X3">IFC4X3</option>
+        </select>
+        <input class="u-full-width" type="text" id="search-query" placeholder="Search ... e.g. window / basin / gutter">
+    </p>
+    <div id="search-results"><p>Loading ...</p></div>
+</section>
+
+<script type="text/javascript">
+function loadJSON(schema, callback) {   
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+    xobj.open('GET', `assets/${schema}.json`, true);
+    xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == '200') {
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null);  
+}
+
+function getResultsFromSchema(schema) {
+    var filteredResults = []
+
+    let keywords = query.value.trim().split(/\s+/);
+    keywords = keywords.map(keyword => keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    keywords = keywords.filter(k => k.length > 0);
+    console.log(keywords);
+
+    for (let [name, data] of Object.entries(schema)) {
+        var totalResults = 0;
+        var cdata = structuredClone(data);
+        [totalMatches, name] = highlightMatches(name, keywords);
+        totalResults += totalMatches;
+        [totalMatches, cdata['description']] = highlightMatches(cdata['description'], keywords);
+        totalResults += totalMatches;
+        if ('predefined_types' in cdata) {
+            for (var [pt, pt_doc] of Object.entries(cdata['predefined_types'])) {
+                var [totalMatches, pt_doc] = highlightMatches(pt_doc, keywords);
+                cdata['predefined_types'][pt] = pt_doc;
+                totalResults += totalMatches;
+
+                var [totalMatches, newPt] = highlightMatches(pt, keywords);
+                if (newPt != pt) {
+                    cdata['predefined_types'][newPt] = cdata['predefined_types'][pt];
+                    delete cdata['predefined_types'][pt];
+                }
+                totalResults += totalMatches;
+            }
+        }
+        if (totalResults > 0) {
+            filteredResults.push([name, cdata])
+        }
+    }
+    return filteredResults;
+}
+
+function highlightMatches(text, keywords) {
+    if ( ! keywords) {
+        return [0, text];
+    }
+    const regex = new RegExp(`(${keywords.join('|')})`, 'gi');
+    let totalResults = 0;
+    const newText = text.replace(regex, (match) => {
+        totalResults++;
+        return `<span class="highlight">${match}</span>`;
+    });
+    return [totalResults, newText];
+}
+
+function appendLiFromResult(ul, item, liTemplate) {
+    var li = document.createElement('li');
+    li.innerHTML = liTemplate
+        .replace('_NAME_', item[0])
+        .replace('_SPEC_URL_', item[1]['spec_url'])
+        .replace('_DESCRIPTION_', item[1]['description']);
+    if ('predefined_types' in item[1]) {
+        _PT_TEMPLATE_ = '<ul>';
+        for (const [pt, pt_doc] of Object.entries(item[1]['predefined_types']).sort((a, b) => a[0].localeCompare(b[0]))) {
+            _PT_TEMPLATE_ += '<li><em><code>' + pt + '</code></em> - ' + pt_doc + '</li>';
+        }
+        _PT_TEMPLATE_ += '</ul>';
+        li.innerHTML = li.innerHTML.replace('_PT_TEMPLATE_', _PT_TEMPLATE_);
+    }
+    ul.appendChild(li);
+}
+
+function getResults(event) {
+    var filteredResults = getResultsFromSchema(document.schema);
+    var filteredAltResults = getResultsFromSchema(document.altSchema);
+    results.innerHTML = '<p>Query value: "<strong>' + query.value + '</strong>" - <strong>' + filteredResults.length + '</strong> result(s) found.</p>';
+    var ul = document.createElement('ul');
+    filteredResults.forEach(function(item) { appendLiFromResult(ul, item, liTemplate); });
+    filteredAltResults.forEach(function(item) { appendLiFromResult(ul, item, liAltTemplate); });
+    results.appendChild(ul);
+}
+
+var schema = document.getElementById('search-schema')
+var query = document.getElementById('search-query')
+var results = document.getElementById('search-results');
+var liTemplate = '<strong><code>_NAME_</code></strong><br /><p>_DESCRIPTION_ - <a href="_SPEC_URL_">Read more</a></p><p>_PT_TEMPLATE_</p>';
+var liAltTemplate = '<strong>Similar names to: <code>_NAME_</code></strong><br /><p>_DESCRIPTION_</p>';
+
+function onFinishLoadJson(response) {
+    document.schema = JSON.parse(response);
+    document.altSchema = {
+        'Glazing / Glass / Pane': { 'description': 'If you are trying to classify a single pane of glass or glazing aggregated within a larger system, consider using an IfcPlate. Otherwise, if it is an entire window, use IfcWindow. If it is a glazed wall, consider IfcWall.', 'attributes': [] },
+        'Signage': { 'description': 'If you are trying to classify signage, please consider using IfcFurniture.', 'attributes': [] },
+        'Hob': { 'description': 'If you are trying to classify a hob on the ground, such as a concrete hob, please consider using an IfcSlab, unless the hob is of a construction method that detaches it from the slab.', 'attributes': [] },
+        'Flashing / Capping': { 'description': 'If you are trying to classify flashing, such as ridge flashing, or barge cappings, often used for waterproofing at junctions, please consider using an IfcCovering.', 'attributes': [] },
+        'Lighting rod': { 'description': 'If you are trying to classify a lighting rod, typically placed high up on a building, try an IfcCableSegment.', 'attributes': [] },
+        'Card or Fob Reader': { 'description': 'If you are trying to classify a card reader or fob reader to gain access to a door, try an IfcSensor with PredefinedType of IDENTIFIERSENSOR.', 'attributes': [] },
+        'Reed Switch': { 'description': 'Use IfcSwitchingDevice', 'attributes': [] },
+        'Electric strike': { 'description': 'This converts electrical to mechanical so use IfcActuator', 'attributes': [] },
+        'Electric isolating Switch': { 'description': 'This is also known as a disconnector, so use IfcSwitchingDevice with PredefinedType of SWITCHDISCONNECTOR', 'attributes': [] },
+        'VAV Box': { 'description': 'Look for IfcAirTerminalBox', 'attributes': [] },
+        'Fan Coil Unit (FCU)': { 'description': 'Look for IfcUnitaryEquipment', 'attributes': [] },
+        'Access Panel': { 'description': 'Use IfcDoor with a PredefinedType of TRAPDOOR', 'attributes': [] }
+    }
+    getResults();
+}
+
+loadJSON('IFC4', onFinishLoadJson);
+query.addEventListener('change', getResults);
+query.addEventListener('keyup', getResults);
+schema.addEventListener('change', function(event) {
+    results.innerHTML = '<p>Loading ...</p>';
+    loadJSON(schema.value, onFinishLoadJson);
+});
+</script>
+
+                    </div>
+                    <!-- .col-ms-9 -->
+
+
+                    <div class="col-lg-3 sidebar-section">
+                        <h3 class="">Like this tool?</h3>
+                        <p>
+                            It's made with completely free software, by users just like yourself.
+                        </p>
+
+                        <div class="banner-content community-butn-section">
+                            <div class="banner-btn">
+                                <a href="https://ifcopenshell.org" class="main-btn wow fadeInUp delay-0-8s">
+                                    <span class="btn-style">
+                                        <i class="icofont-md icofont-code-alt"></i> Learn more
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+        <!--=== End Banner Section ===-->
+{% include "footer.html" %}
