@@ -77,11 +77,42 @@
 
 
                     <div class="col-lg-3 sidebar-section">
-                        <h3 class=""> Latest code update </h3>
+                        <h3 class=""> Latest code updates </h3>
                         <ul id="commits" class="latest-code"></ul>
+                        <script>
+                            let liTemplate = '<li><img src="_THUMBNAIL_" class="post-thumbnail" alt="Avatar" /><p class="post-paragraph"><a href="_LINK_">_TITLE_</a> by <a href="_AUTHORURL_"><span class="author-name">@_AUTHORNAME_</span></a> <span class="post-date">_UPDATED_</span></p></li>'
+                            const apiUrl = 'https://api.github.com/repos/IfcOpenShell/IfcOpenShell/commits';
+                            fetch(apiUrl)
+                            .then(response => response.json())
+                            .then(commits => {
+                                console.log('we got');
+                                console.log(commits);
+                                const commitsList = document.getElementById('commits');
+                                for (let i = 0; i < 10; i++) {
+                                    let commit = commits[i];
+                                    var data = {
+                                        '_TITLE_': commit.commit.message,
+                                        '_UPDATED_': commit.commit.author.date.split('T')[0],
+                                        '_LINK_': commit.html_url,
+                                        '_THUMBNAIL_': commit.author.avatar_url,
+                                        '_AUTHORNAME_': commit.author.login,
+                                        '_AUTHORURL_': commit.author.html_url
+                                    };
+                                    var innerHTML = liTemplate;
+                                    for (var key in data) {
+                                        innerHTML = innerHTML.replace(key, data[key]);
+                                    }
+                                    var li = document.createElement('li');
+                                    li.innerHTML = innerHTML;
+                                    commitsList.appendChild(li);
+                                }
+                            })
+                            .catch(error => console.error('Error fetching commits:', error));
+                        </script>
                         <a href="https://blenderbim.org/" class="view-more"> View more </a>
                         <h3 class="">Tweet twoot</h3>
-                        <a class="twitter-timeline" data-lang="en" data-dnt="true" data-tweet-limit="2" href="https://twitter.com/BlenderBIM?ref_src=twsrc%5Etfw">Tweets by BlenderBIM</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <!-- Twitter embeds are broken -->
+                        <a href="https://twitter.com/BlenderBIM">Check out Tweets by BlenderBIM</a>
                         <!--
                     <h3 class="">Videos</h3>
                         <div class="embed">

@@ -183,47 +183,4 @@
         }
     }
     //  Home page Tab section
-
-
-    // community page code
-    function loadRSS(callback) {
-        var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType('application/xml');
-        xobj.open('GET', 'assets/v0.7.0.atom', true);
-        xobj.onreadystatechange = function() {
-            if (xobj.readyState == 4 && xobj.status == '200') {
-                callback(xobj.responseText);
-            }
-        };
-        xobj.send(null);
-    }
-    loadRSS(function(response) {
-        var parser = new DOMParser();
-        var xmlDoc = parser.parseFromString(response, 'text/xml');
-        var entries = xmlDoc.getElementsByTagName('entry');
-        var liTemplate = '<li><img src="_THUMBNAIL_" class="post-thumbnail" alt="Avatar" /><p class="post-paragraph"><a href="_LINK_">_TITLE_</a> by <a href="_AUTHORURL_"><span class="author-name">@_AUTHORNAME_</span></a> <span class="post-date">_UPDATED_</span></p></li>'
-        var commits = document.getElementById('commits');
-        if (!commits) {
-            return;
-        }
-        for (var i = 0; i < 10; i++) {
-            console.log(entries[i].getElementsByTagName('link')[0].getAttribute('href'));
-            console.log(entries[i].getElementsByTagName('link')[0]);
-            var data = {
-                '_TITLE_': entries[i].getElementsByTagName('title')[0].textContent,
-                '_UPDATED_': entries[i].getElementsByTagName('updated')[0].textContent.split('T')[0],
-                '_LINK_': entries[i].getElementsByTagName('link')[0].getAttribute('href'),
-                '_THUMBNAIL_': entries[i].getElementsByTagName('media:thumbnail')[0].getAttribute('url'),
-                '_AUTHORNAME_': entries[i].getElementsByTagName('author')[0].getElementsByTagName('name')[0].textContent ? entries[i].getElementsByTagName('author')[0].getElementsByTagName('name')[0].textContent : entries[i].getElementsByTagName('author')[0].getElementsByTagName('email')[0].textContent,
-                '_AUTHORURL_': entries[i].getElementsByTagName('author')[0].getElementsByTagName('uri').length ? entries[i].getElementsByTagName('author')[0].getElementsByTagName('uri')[0].textContent : 'mailto:' + entries[i].getElementsByTagName('author')[0].getElementsByTagName('email')[0].textContent
-            };
-            var innerHTML = liTemplate;
-            for (var key in data) {
-                innerHTML = innerHTML.replace(key, data[key]);
-            }
-            var li = document.createElement('li');
-            li.innerHTML = innerHTML;
-            commits.appendChild(li);
-        }
-    });
 })(jQuery);
