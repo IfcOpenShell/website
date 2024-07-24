@@ -169,7 +169,8 @@ function onFinishLoadJson(response) {
         'Electric isolating Switch': { 'description': 'This is also known as a disconnector, so use IfcSwitchingDevice with PredefinedType of SWITCHDISCONNECTOR', 'attributes': [] },
         'VAV Box': { 'description': 'Look for IfcAirTerminalBox', 'attributes': [] },
         'Fan Coil Unit (FCU)': { 'description': 'Look for IfcUnitaryEquipment', 'attributes': [] },
-        'Access Panel': { 'description': 'Use IfcDoor with a PredefinedType of TRAPDOOR', 'attributes': [] }
+        'Access Panel': { 'description': 'Use IfcDoor with a PredefinedType of TRAPDOOR', 'attributes': [] },
+        'Screed': { 'description': 'A screed is used in construction to create a level surface on a rough floor substrate. If a single element represents a composite floor structure that includes a screed layer, classify the whole element as IfcSlab with the PredefinedType: FLOOR. If the screed is a separate element from the floor structure, classify it as IfcCovering and use the PredefinedType: FLOORING when the screed is part of a composite floor covering that includes a finished surface or serves as a finished surface itself. If the screed is its own independent element, use the PredefinedType: TOPPING.', 'attributes': [] }
     }
     getResults();
 }
