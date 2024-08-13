@@ -17,12 +17,12 @@ jobs:
           pip3 install requests Jinja2
           git config --global user.name 'IfcOpenBot'
           git config --global user.email 'IfcOpenBot@users.noreply.github.com'
-          git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/blenderbim_org_static_html
+          git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/bonsaibim_org_static_html
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/ifcopenshell_org_static_html
           python3 website.py
-          git -C blenderbim_org_static_html add .
-          git -C blenderbim_org_static_html commit --allow-empty -m "$(git log --oneline -1)"
-          git -C blenderbim_org_static_html push
+          git -C bonsaibim_org_static_html add .
+          git -C bonsaibim_org_static_html commit --allow-empty -m "$(git log --oneline -1)"
+          git -C bonsaibim_org_static_html push
           git -C ifcopenshell_org_static_html add .
           git -C ifcopenshell_org_static_html commit --allow-empty -m "$(git log --oneline -1)"
           git -C ifcopenshell_org_static_html push
