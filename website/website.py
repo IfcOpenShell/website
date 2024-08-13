@@ -116,9 +116,9 @@ pages = {
         "index": "IfcOpenShell - The open source IFC toolkit and geometry engine",
         "downloads": "Downloads - IfcOpenShell C++, Python, and utilities",
     },
-    "blenderbim": {
-        "blender": "BlenderBIM Add-on - beautiful, detailed, and data-rich OpenBIM",
-        "download": "Download - install the BlenderBIM Add-on for Windows, Mac, and Linux",
+    "bonsaibim": {
+        "blender": "Bonsai - beautiful, detailed, and data-rich OpenBIM",
+        "download": "Download - install Bonsai for Windows, Mac, and Linux",
         "community": "Community - provide support, share your work, and learn together",
         "search-ifc-class": "Search IFC class - find the correct IFC class to use in your BIM model",
     },
@@ -135,7 +135,7 @@ for brand, content in pages.items():
         extra = {}
         if brand == "ifcopenshell" and page == "index":
             extra = get_contributors()
-        elif brand == "blenderbim" and page == "blender":
+        elif brand == "bonsaibim" and page == "blender":
             filename = "index.html"
         content = template.render(brand=brand, page=page, title=title, **extra)
         with open(f"{brand}_org_static_html/{filename}", mode="w", encoding="utf-8") as f:
