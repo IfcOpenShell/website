@@ -1776,3 +1776,7 @@
     background: rgb(228,229,36);
     background: linear-gradient(90deg, rgba(228,229,36,1) 0%, rgba(252,238,33,1) 100%);
 }
+.icon-logo {
+    width: 64px;
+    height: 64px;
+}
