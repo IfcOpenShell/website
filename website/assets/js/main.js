@@ -130,7 +130,7 @@
 
     fetch('https://opencollective.com/opensourcebim.json').then(r => r.json()).then(d => {
         let monthly = d.yearlyIncome / 12 / 100.;
-        let percentage = monthly / 2500 * 100;
+        let percentage = monthly / 5000 * 100;
         var amountRaisedElements = document.getElementsByClassName('amount-raised');
         for (var i = 0; i < amountRaisedElements.length; i++) {
             amountRaisedElements[i].textContent = '$' + monthly.toFixed(0);
