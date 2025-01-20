@@ -115,6 +115,7 @@ pages = {
     "ifcopenshell": {
         "index": "IfcOpenShell - The open source IFC toolkit and geometry engine",
         "downloads": "Downloads - IfcOpenShell C++, Python, and utilities",
+        "upload": "Upload - Private filesharing for issues",
     },
     "bonsaibim": {
         "blender": "Bonsai - beautiful, detailed, and data-rich OpenBIM",
