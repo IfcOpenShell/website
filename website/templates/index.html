@@ -201,15 +201,16 @@ location = util.<span class="green-color">get_container</span>(door)
                                 <div class="item" >
 <pre>
 <span class="orange-color"># Create a wall on the site</span>
-from <span class="green-color">ifcopenshell.api</span> import <span class="green-color">run</span>
+import <span class="green-color">ifcopenshell.api.root</span>
+import <span class="green-color">ifcopenshell.api.spatial</span>
 
-site = run("<span class="green-color">root.create_entity</span>", model,
-    ifc_class="IfcSite")
-wall = run("<span class="green-color">root.create_entity</span>", model,
-    ifc_class="IfcWall")
+site = <span class="green-color">ifcopenshell.api.root.create_entity</span>(
+    model, ifc_class="IfcSite")
+wall = <span class="green-color">ifcopenshell.api.root.create_entity</span>(
+    model, ifc_class="IfcWall")
 
-run("<span class="green-color">spatial.assign_container</span>", model,
-    relating_structure=site, product=wall)
+<span class="green-color">ifcopenshell.api.spatial.assign_container</span>(
+    model, relating_structure=site, products=[wall])
 </pre>
                                 </div>
                             </div>
