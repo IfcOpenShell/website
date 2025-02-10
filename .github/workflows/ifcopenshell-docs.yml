@@ -13,6 +13,7 @@ jobs:
         run: |
           sudo apt update && sudo apt install -y python3-pip
           pip3 install furo sphinx-autoapi sphinx-copybutton
+          pip3 install --force-reinstall -v "astroid==3.3.8"
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/IfcOpenShell
           cd IfcOpenShell/src/ifcopenshell-python/docs
           make html
