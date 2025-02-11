@@ -5,14 +5,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700&display=swap');
 
 
- 
+
 /* 01 - Global Style <<<<======================================================>>>>*/
  body {
     font-size: 16px;
     font-family: "Nunito", sans-serif;
     color: #2e3436;
     background: #eeeeec;
-    overflow-x: hidden 
+    overflow-x: hidden
 }
  .top-layer {
     position: relative;
@@ -850,6 +850,9 @@
  .for-mobile {
     display: none;
 }
+ .fund {
+    display: inline-flex;
+ }
 /* 05 */
 /* 06 - Banner Style <<<<======================================================>>>>*/
  .banner-section .side-border {
@@ -1121,7 +1124,7 @@
 }
  .main-services-item {
     position: relative;
-    z-index: 9991 
+    z-index: 9991
 }
  .main-services-item .desing-1 {
     position: absolute;
@@ -1319,7 +1322,7 @@
  }
  .product-section-1 .main-btn {
     color: #fff;
-    background: #40b74c 
+    background: #40b74c
 }
  .product-section-1 p {
     margin-bottom: 30px;
@@ -1368,7 +1371,7 @@
 }
  .product-section-2 .main-btn {
     color: #fff;
-    background: #40b74c 
+    background: #40b74c
 }
  .product-section-2 p {
     margin-bottom: 30px;
