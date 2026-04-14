@@ -20,6 +20,7 @@ jobs:
           git config --global user.email 'IfcOpenBot@users.noreply.github.com'
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/bonsaibim_org_docs
           rm -rf bonsaibim_org_docs/*
+          printf "docs.bonsaibim.org\n" > bonsaibim_org_docs/CNAME
           cp -r _build/html/* bonsaibim_org_docs/
           touch bonsaibim_org_docs/.nojekyll
           git -C bonsaibim_org_docs add .

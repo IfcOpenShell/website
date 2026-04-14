@@ -21,6 +21,7 @@ jobs:
           git config --global user.email 'IfcOpenBot@users.noreply.github.com'
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/ifcopenshell_org_docs
           rm -rf ifcopenshell_org_docs/*
+          printf "docs.ifcopenshell.org\n" > ifcopenshell_org_docs/CNAME
           cp -r _build/html/* ifcopenshell_org_docs/
           touch ifcopenshell_org_docs/.nojekyll
           git -C ifcopenshell_org_docs add .
