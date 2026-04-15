@@ -1,7 +1,6 @@
 name: publish-websites
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
