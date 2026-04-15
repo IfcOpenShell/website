@@ -2,21 +2,36 @@
 # /// script
 # dependencies = [
 #     "jinja2",
+#     "PyGithub",
 #     "requests",
 # ]
 # ///
 
+"""
+Generate static HTML for ifcopenshell.org and bonsaibim.org.
+
+Environment variables:
+  GH_APIKEY  GitHub personal access token (required).
+  OSC_APIKEY OpenCollective API key (required).
+  COMMIT     Commit SHA to use as the source for VERSION.
+             By default the latest commit on the default branch is used.
+"""
+
+import itertools
+import operator
 import os
 import shutil
-import operator
 
 import requests
+from github import Auth, Github
 from jinja2 import Environment, FileSystemLoader
+
+gh = Github(auth=Auth.Token(os.environ["GH_APIKEY"]))
+ifcopenshell_repo = gh.get_repo("IfcOpenShell/IfcOpenShell")
 
 
 def get_contributors():
     osc_apikey = os.environ["OSC_APIKEY"]
-    gh_apikey = os.environ["GH_APIKEY"]
 
     tier1 = []
     tier2 = []
@@ -89,32 +104,20 @@ def get_contributors():
             tier3.append(data)
 
     # Devs are contributors too!
-    page = 1
-    while True:
-        results = requests.get(
-            f"https://api.github.com/repos/ifcopenshell/ifcopenshell/contributors?page={page}&per_page=100",
-            headers={
-                "Accept": "application/vnd.github+json",
-                "Authorization": f"Bearer {gh_apikey}",
-            },
-        ).json()
-        page += 1
-        if not results or page > 10:
-            break
-        for member in results:
-            data = {
-                "name": member["login"],
-                "avatar": member["avatar_url"],
-                "url": member["html_url"],
-                "type": "developer",
-                "amount": member["contributions"],
-            }
-            if data["amount"] >= 500:
-                tier1.append(data)
-            elif data["amount"] >= 50:
-                tier2.append(data)
-            else:
-                tier3.append(data)
+    for member in itertools.islice(ifcopenshell_repo.get_contributors(), 1000):
+        data = {
+            "name": member.login,
+            "avatar": member.avatar_url,
+            "url": member.html_url,
+            "type": "developer",
+            "amount": member.contributions,
+        }
+        if data["amount"] >= 500:
+            tier1.append(data)
+        elif data["amount"] >= 50:
+            tier2.append(data)
+        else:
+            tier3.append(data)
 
     return {"tier1": tier1, "tier2": tier2, "tier3": tier3}
 
@@ -133,6 +136,9 @@ pages = {
     },
 }
 
+_version_kwargs = {"ref": commit} if (commit := os.getenv("COMMIT")) else {}
+VERSION = ifcopenshell_repo.get_contents("VERSION", **_version_kwargs).decoded_content.decode().strip()
+
 environment = Environment(loader=FileSystemLoader("templates/"))
 
 for brand, content in pages.items():
@@ -146,6 +152,6 @@ for brand, content in pages.items():
             extra = get_contributors()
         elif brand == "bonsaibim" and page == "blender":
             filename = "index.html"
-        content = template.render(brand=brand, page=page, title=title, **extra)
+        content = template.render(brand=brand, page=page, title=title, version=VERSION, **extra)
         with open(f"{brand}_org_static_html/{filename}", mode="w", encoding="utf-8") as f:
             f.write(content)
