@@ -1,3 +1,11 @@
+#!/usr/bin/env -S uv run
+# /// script
+# dependencies = [
+#     "jinja2",
+#     "requests",
+# ]
+# ///
+
 import os
 import shutil
 import operator

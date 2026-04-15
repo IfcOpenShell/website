@@ -10,18 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
+
       - working-directory: ./website
         env:
           GH_APIKEY: ${{ secrets.GH_APIKEY }}
           OSC_APIKEY: ${{ secrets.OSC_APIKEY }}
         run: |
-          sudo apt update && sudo apt install -y python3-pip
-          pip3 install requests Jinja2
           git config --global user.name 'IfcOpenBot'
           git config --global user.email 'IfcOpenBot@users.noreply.github.com'
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/bonsaibim_org_static_html
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/ifcopenshell_org_static_html
-          python3 website.py
+          uv run website.py
           git -C bonsaibim_org_static_html add .
           git -C bonsaibim_org_static_html commit --allow-empty -m "$(git log --oneline -1)"
           git -C bonsaibim_org_static_html push
