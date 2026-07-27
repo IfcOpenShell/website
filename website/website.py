@@ -164,6 +164,9 @@ pages = {
     },
     "bonsaibim": {
         "blender": "Bonsai - beautiful, detailed, and data-rich OpenBIM",
+        "studio": "Bonsai Studio - native IFC authoring in Blender",
+        "viewer": "Bonsai Viewer - a fast desktop viewer for IFC models",
+        "web": "Bonsai Web - view and share IFC models in the browser",
         "download": "Download - install Bonsai for Windows, Mac, and Linux",
         "community": "Community - provide support, share your work, and learn together",
         "search-ifc-class": "Search IFC class - find the correct IFC class to use in your BIM model",

@@ -13,6 +13,8 @@
         {% if brand == "ifcopenshell" %}
         <link rel="icon" type="image/png" href="assets/images/favicon.png">
         {% elif brand == "bonsaibim" %}
+        <link rel="stylesheet" href="assets/css/bonsai.css">
+        <link rel="icon" type="image/svg+xml" href="assets/images/downloads/Bonsai.svg" />
         <link rel="icon" type="image/png" href="assets/images/favicon-blender.png" />
         {% endif %}
         <title>{{ title }}</title>
@@ -26,7 +28,7 @@
                         {% if brand == "ifcopenshell" %}
                         <img src="assets/images/logo.png" alt="Logo">
                         {% elif brand == "bonsaibim" %}
-                        <img src="assets/images/blender/blender-logo.png" alt="Logo">
+                        <img src="assets/images/downloads/Bonsai.svg" alt="Bonsai" style="height: 42px; width: auto;">
                         {% endif %}
                     </a>
                     <a href="javascript:void(0);" class="mobile-menu">
@@ -57,13 +59,16 @@
                                 <a href="index.html" class="nav-link{% if page == "blender" %} active{% endif %}">home<span></span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="download.html" class="nav-link{% if page == "download" %} active{% endif %}">download<span></span></a>
+                                <a href="studio.html" class="nav-link{% if page == "studio" %} active{% endif %}">studio<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="viewer.html" class="nav-link{% if page == "viewer" %} active{% endif %}">viewer<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="web.html" class="nav-link{% if page == "web" %} active{% endif %}">web<span></span></a>
                             </li>
                             <li class="nav-item">
                                 <a href="community.html" class="nav-link{% if page == "community" %} active{% endif %}">community<span></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://docs.bonsaibim.org" class="nav-link">documentation<span></span></a>
                             </li>
                             <li class="nav-item">
                                 <a href="https://bonsaibim.org/search-ifc-class.html" class="nav-link">search ifc class<span></span></a>
@@ -104,7 +109,7 @@
                         {% if brand == "ifcopenshell" %}
                         <img src="assets/images/logo.png" alt="Logo">
                         {% elif brand == "bonsaibim" %}
-                        <img src="assets/images/blender/blender-logo.png" alt="Logo">
+                        <img src="assets/images/downloads/Bonsai.svg" alt="Bonsai" style="height: 42px; width: auto;">
                         {% endif %}
                     </a>
                 </div>
@@ -135,13 +140,16 @@
                         <a href="index.html" class="nav-link{% if page == "blender" %} active{% endif %}">home<span></span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="download.html" class="nav-link{% if page == "download" %} active{% endif %}">download<span></span></a>
+                        <a href="studio.html" class="nav-link{% if page == "studio" %} active{% endif %}">studio<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="viewer.html" class="nav-link{% if page == "viewer" %} active{% endif %}">viewer<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="web.html" class="nav-link{% if page == "web" %} active{% endif %}">web<span></span></a>
                     </li>
                     <li class="nav-item">
                         <a href="community.html" class="nav-link{% if page == "community" %} active{% endif %}">community<span></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://docs.bonsaibim.org" class="nav-link">documentation<span></span></a>
                     </li>
                     {% endif %}
                 </ul>

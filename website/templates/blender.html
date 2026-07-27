@@ -1,108 +1,108 @@
 {% include "header.html" %}
-		<!--=== Start Banner Section ===-->
-		<section class="banner-section bg-color-fff1f2">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-12">
-						<div class="side-border side-border-inner wow fadeInUp delay-0-4s"></div>
-						<div class="banner-content">
-                            <h1 class="wow fadeInUp delay-0-2s"> Bonsai </h1>
-							<h2 class="up-title wow fadeInUp delay-0-4s"> An add-on for beautiful, detailed, and data-rich OpenBIM with Blender </h2>
-						</div>
+<div class="bx">
+
+	<!--=== Hero ===-->
+	<section class="bx-hero">
+		<div class="bx-wrap">
+			<div class="bx-hero-grid">
+				<div class="bx-hero-copy wow fadeInUp delay-0-2s">
+					<span class="bx-eyebrow">Free &amp; open source, native IFC</span>
+					<h1 class="bx-h1">Bonsai</h1>
+					<p class="bx-lead">
+						Beautiful, detailed, and data-rich OpenBIM. Bonsai is a family of open source
+						apps for authoring, reviewing, and sharing IFC models, with no lock-in and no
+						proprietary formats, ever.
+					</p>
+					<div class="bx-cta-row">
+						<a href="#apps" class="bx-btn bx-btn-primary">Explore the apps</a>
+						<a href="https://docs.bonsaibim.org" class="bx-btn bx-btn-ghost">Documentation</a>
+					</div>
+				</div>
+				<div class="bx-hero-media wow fadeInUp delay-0-4s">
+					<div class="bx-frame">
+						<img src="assets/images/blender/banner-image.png" alt="Bonsai authoring an IFC model" />
 					</div>
 				</div>
 			</div>
-		</section>
-		<!--=== End Banner Section ===-->
+		</div>
+	</section>
 
-		<section class="product-section-1 blender-slider">
-			<div class="container">
-
-				<div class="row align-items-center">
-					<div class="offset-sm-1 col-sm-10 wow fadeInUp delay-0-4s">
-
-						<div class="blender-page-slider-section">
-							<div class="owl-carousel owl-theme">
-					            <div class="item">
-									<img src="assets/images/blender/banner-image.png" alt="Viewing an IFC model" class="banner-image-big" />
-					            </div>
-					            <div class="item">
-					               <img src="assets/images/blender/banner-image2.png" alt="Viewing a federated MEP model" class="banner-image-big" />
-					            </div>
-					            <div class="item">
-					               	<img src="assets/images/blender/banner-image3.png" alt="Viewing a structural model and gantt chart" class="banner-image-big" />
-					            </div>
-					         </div>
-					         <img src="assets/images/blender/design-new.png" alt="Banner Image" class="banner-image-small" />	
-						</div>
-					
-						<h2 class="sub-heading"> Free, open source, native IFC authoring platform </h2>
-						<div class="banner-btn sub-button">
-							<a href="download.html" class="main-btn wow fadeInUp delay-0-8s">
-								<span class="btn-style">
-									<img src="assets/images/banner/download-icon.png" /> Get v{{ version }}
-								</span>
-							</a>
-						</div>
+	<!--=== Product cards ===-->
+	<section class="bx-section tint" id="apps">
+		<div class="bx-wrap">
+			<div class="bx-section-head bx-center">
+				<span class="bx-eyebrow">Choose your workflow</span>
+				<h2 class="bx-h2">Three apps, one OpenBIM platform</h2>
+				<p class="bx-lead">Same open IFC core. Pick the experience that fits how you work.</p>
+			</div>
+			<div class="bx-products">
+				<a href="studio.html" class="bx-card wow fadeInUp delay-0-2s">
+					<div class="bx-card-media">
+						<img src="assets/images/blender/banner-image.png" alt="Bonsai Studio" />
 					</div>
+					<div class="bx-card-body">
+						<img class="bx-card-logo" src="assets/images/downloads/Bonsai.svg" alt="Bonsai Studio icon" />
+						<h3>Bonsai Studio</h3>
+						<p>The full native IFC authoring environment built on Blender. Model, document,
+						and manage BIM data across every discipline.</p>
+						<span class="bx-textlink">Explore Studio <span class="bx-arrow">&rarr;</span></span>
+					</div>
+				</a>
+				<a href="viewer.html" class="bx-card wow fadeInUp delay-0-4s">
+					<div class="bx-card-media">
+						<img src="assets/images/blender/banner-image2.png" alt="Bonsai Viewer" />
+					</div>
+					<div class="bx-card-body">
+						<img class="bx-card-logo" src="assets/images/downloads/BonsaiViewer.svg" alt="Bonsai Viewer icon" />
+						<h3>Bonsai Viewer</h3>
+						<p>A fast, lightweight desktop viewer for exploring and coordinating IFC models,
+						drawings, and data, with no authoring environment required.</p>
+						<span class="bx-textlink">Explore Viewer <span class="bx-arrow">&rarr;</span></span>
+					</div>
+				</a>
+				<a href="web.html" class="bx-card wow fadeInUp delay-0-6s">
+					<div class="bx-card-media">
+						<span class="bx-badge">Coming soon</span>
+						<img src="assets/images/blender/banner-image3.png" alt="Bonsai Web" />
+					</div>
+					<div class="bx-card-body">
+						<img class="bx-card-logo" src="assets/images/downloads/BonsaiWeb.svg" alt="Bonsai Web icon" />
+						<h3>Bonsai Web</h3>
+						<p>View and share IFC models straight from the browser. Send a link and let anyone
+						explore your BIM data, with nothing to install.</p>
+						<span class="bx-textlink">Explore Web <span class="bx-arrow">&rarr;</span></span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!--=== Value strip ===-->
+	<section class="bx-section">
+		<div class="bx-wrap">
+			<div class="bx-section-head bx-center">
+				<h2 class="bx-h2">Built on open foundations</h2>
+			</div>
+			<div class="bx-chips">
+				<div class="bx-chip wow fadeInUp delay-0-2s">
+					<div class="bx-chip-ico"><img src="assets/images/icon/icon-1.png" alt="" /></div>
+					<h4>Free forever</h4>
+					<p>Bonsai is free software and always will be, sustained by a community of hundreds of contributors.</p>
 				</div>
-				<!-- .row -->
-
-				<div class="container">
-					<div class="row image-section-1">
-						<img src="assets/images/blender/design-101.png" alt="Design 101" class="bg-images-1" />
-						<img src="assets/images/blender/design-102.png" alt="Design 102" class="bg-images-2" />
-						<div class="col-md-3 col-6">
-							<div class="blender-card-section">
-								<div class="text-top color-1"> Audit and analyse </div>
-								<img src="assets/images/blender/image1.png" alt="Banner Image" class="grid-images" />
-							</div>
-						</div>
-						<div class="col-md-3 col-6">
-							<div class="blender-card-section">
-								<div class="text-bottom color-2"> Author IFC models </div>
-								<img src="assets/images/blender/image2.png" alt="Banner Image" class="grid-images" />
-							</div>
-						</div>
-						<div class="col-md-3 col-6">
-							<div class="blender-card-section">
-								<div class="text-top color-3"> Drawing generation </div>
-								<img src="assets/images/blender/image3.png" alt="Banner Image" class="grid-images" />
-							</div>
-						</div>
-						<div class="col-md-3 col-6">
-							<div class="blender-card-section">
-								<div class="text-bottom color-4"> Structural analysis </div>
-								<img src="assets/images/blender/image4.png" alt="Banner Image" class="grid-images" />
-							</div>
-						</div>
-						<div class="col-md-3 col-6">
-							<div class="blender-card-section">
-								<div class="text-top color-1"> MEP systems </div>
-								<img src="assets/images/blender/image5.png" alt="Banner Image" class="grid-images" />
-							</div>
-						</div>
-						<div class="col-md-3 col-6">
-							<div class="blender-card-section">
-								<div class="text-bottom color-2"> Costing and scheduling </div>
-								<img src="assets/images/blender/image6.png" alt="Banner Image" class="grid-images" />
-							</div>
-						</div>
-						<div class="col-md-3 col-6">
-							<div class="blender-card-section">
-								<div class="text-top color-3"> Facility management </div>
-								<img src="assets/images/blender/image7.png" alt="Banner Image" class="grid-images" />
-							</div>
-						</div>
-						<div class="col-md-3 col-6">
-							<div class="blender-card-section">
-								<div class="text-bottom color-4"> Live building sensors </div>
-								<img src="assets/images/blender/image8.png" alt="Banner Image" class="grid-images" />
-							</div>
-						</div>
-					</div>
+				<div class="bx-chip wow fadeInUp delay-0-4s">
+					<div class="bx-chip-ico"><img src="assets/images/icon/icon-3.png" alt="" /></div>
+					<h4>Native IFC</h4>
+					<p>Every edit reads and writes real IFC. Your data lives in an open standard, not a proprietary file.</p>
+				</div>
+				<div class="bx-chip wow fadeInUp delay-0-6s">
+					<div class="bx-chip-ico"><img src="assets/images/icon/icon-4.png" alt="" /></div>
+					<h4>No lock-in</h4>
+					<p>Powered by IfcOpenShell and fully scriptable in Python. Automate anything, own everything.</p>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
+
+</div>
 {% include "logos.html" %}
 {% include "footer.html" %}
