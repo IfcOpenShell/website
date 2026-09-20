@@ -193,15 +193,16 @@ for brand, content in pages.items():
             extra = get_contributors()
         elif brand == "bonsaibim" and page == "blender":
             filename = "index.html"
-        content = template.render(brand=brand, page=page, title=title, version=VERSION, **extra)
-        with open(f"{brand}_org_static_html/{filename}", mode="w", encoding="utf-8") as f:
-            f.write(content)
         if brand == "bonsaibim" and page == "documentation":
-            # The same page is the landing page of docs.bonsaibim.org, where it has no assets or
-            # other pages next to it, so everything relative resolves against the website.
+            # The landing page of docs.bonsaibim.org, not a page of the website. It has no assets
+            # or other pages next to it, so everything relative resolves against the website.
             os.makedirs("bonsaibim_org_docs_html", exist_ok=True)
             content = template.render(
                 brand=brand, page=page, title=title, version=VERSION, base_url="https://bonsaibim.org/"
             )
             with open("bonsaibim_org_docs_html/index.html", mode="w", encoding="utf-8") as f:
                 f.write(content)
+            continue
+        content = template.render(brand=brand, page=page, title=title, version=VERSION, **extra)
+        with open(f"{brand}_org_static_html/{filename}", mode="w", encoding="utf-8") as f:
+            f.write(content)
