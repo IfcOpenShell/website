@@ -79,6 +79,10 @@
 }
 .bx-frame img { display: block; width: 100%; height: auto; }
 .bx-frame.bare { border-radius: 0; overflow: visible; background: none; box-shadow: none; border: 0; }
+.bx-credit { font-size: 12px; line-height: 1.5; color: var(--bx-muted); margin: 12px 4px 0; }
+.bx-credit.bx-center { margin-top: 22px; }
+.bx-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.bx-credit a:hover { color: var(--bx-green); }
 
 /* ---- Hero ------------------------------------------------------------- */
 .bx-hero { padding: 76px 0 84px; background: radial-gradient(1200px 500px at 80% -10%, #eaf6ec 0%, rgba(234, 246, 236, 0) 60%); }
