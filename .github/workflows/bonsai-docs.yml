@@ -1,6 +1,17 @@
 name: bonsai-docs
+
+# Publishes the landing page and the stable docs of Bonsai Studio and Bonsai
+# Viewer to docs.bonsaibim.org, as part of a stable release. The unstable docs
+# in the same repository (studio-unstable/, viewer-unstable/) are published on
+# push by the IfcOpenShell repository and are left untouched here.
+
 on:
   workflow_dispatch:
+    inputs:
+      ref:
+        description: IfcOpenShell branch or tag to build the docs from
+        default: v0.9.0
+
 jobs:
   bonsai-docs:
     runs-on: ubuntu-latest
@@ -13,16 +24,23 @@ jobs:
         run: |
           sudo apt update && sudo apt install -y python3-pip
           pip3 install furo sphinx-autoapi sphinx-copybutton
-          git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/IfcOpenShell
-          cd IfcOpenShell/src/bonsai/docs
-          make html
+          git clone --depth 1 --branch "${{ inputs.ref }}" https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/IfcOpenShell
+          make -C IfcOpenShell/src/bonsai/docs html
+          make -C IfcOpenShell/src/bonsaiviewer/docs html
           git config --global user.name 'IfcOpenBot'
           git config --global user.email 'IfcOpenBot@users.noreply.github.com'
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/bonsaibim_org_docs
-          rm -rf bonsaibim_org_docs/*
-          printf "docs.bonsaibim.org\n" > bonsaibim_org_docs/CNAME
-          cp -r _build/html/* bonsaibim_org_docs/
-          touch bonsaibim_org_docs/.nojekyll
-          git -C bonsaibim_org_docs add .
-          git -C bonsaibim_org_docs commit -m "Build"
-          git -C bonsaibim_org_docs push
+          cd bonsaibim_org_docs
+          # Replace everything except the unstable docs.
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name '*-unstable' -exec rm -rf {} +
+          cp -r ../bonsaibim_docs/site/. .
+          cp -r ../IfcOpenShell/src/bonsai/docs/_build/html studio
+          cp -r ../IfcOpenShell/src/bonsaiviewer/docs/_build/html viewer
+          # TODO: remove after 2027-09-20, see the script.
+          python3 ../bonsaibim_docs/redirects.py .
+          printf "docs.bonsaibim.org\n" > CNAME
+          touch .nojekyll
+          git add .
+          git commit -m "Build ${{ inputs.ref }}"
+          # The unstable docs may have been pushed in the meantime.
+          for attempt in 1 2 3; do git push && break || git pull --rebase; done
