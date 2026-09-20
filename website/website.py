@@ -22,7 +22,15 @@ Environment variables:
              Where bonsaibim.org is served from, used by the landing page of
              docs.bonsaibim.org to reach the website's assets and pages.
              Defaults to https://bonsaibim.org/. For a local preview, serve
-             bonsaibim_org_static_html on a port and point this at it.
+             bonsaibim_org_static_html on a port and point this at it. Browsers
+             only load web fonts from the page's own origin unless the server
+             allows it (GitHub Pages does, php -S doesn't), so to see the icon
+             font too, serve the docs page from the same origin:
+
+               WEBSITE_URL=http://localhost:8000/ python website.py
+               cp -r bonsaibim_org_docs_html bonsaibim_org_static_html/docs
+               (cd bonsaibim_org_static_html && php -S localhost:8000)
+               open http://localhost:8000/docs/
 
 If neither GH_APIKEY nor OSC_APIKEY is set the site still builds end to end
 using placeholder data, which is handy for local previews.
