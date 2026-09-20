@@ -169,6 +169,7 @@ pages = {
         "web": "Bonsai Web - view and share IFC models in the browser",
         "download": "Download - install Bonsai for Windows, Mac, and Linux",
         "community": "Community - provide support, share your work, and learn together",
+        "documentation": "Documentation - guides and references for Bonsai Studio, Viewer and Web",
         "search-ifc-class": "Search IFC class - find the correct IFC class to use in your BIM model",
     },
 }
@@ -195,3 +196,12 @@ for brand, content in pages.items():
         content = template.render(brand=brand, page=page, title=title, version=VERSION, **extra)
         with open(f"{brand}_org_static_html/{filename}", mode="w", encoding="utf-8") as f:
             f.write(content)
+        if brand == "bonsaibim" and page == "documentation":
+            # The same page is the landing page of docs.bonsaibim.org, where it has no assets or
+            # other pages next to it, so everything relative resolves against the website.
+            os.makedirs("bonsaibim_org_docs_html", exist_ok=True)
+            content = template.render(
+                brand=brand, page=page, title=title, version=VERSION, base_url="https://bonsaibim.org/"
+            )
+            with open("bonsaibim_org_docs_html/index.html", mode="w", encoding="utf-8") as f:
+                f.write(content)

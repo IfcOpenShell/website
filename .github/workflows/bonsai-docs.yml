@@ -18,6 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
       - working-directory: ./
         env:
           GH_APIKEY: ${{ secrets.GH_APIKEY }}
@@ -27,13 +28,15 @@ jobs:
           git clone --depth 1 --branch "${{ inputs.ref }}" https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/IfcOpenShell
           make -C IfcOpenShell/src/bonsai/docs html
           make -C IfcOpenShell/src/bonsaiviewer/docs html
+          # The landing page is the website's documentation page, see website.py.
+          (cd website && uv run website.py)
           git config --global user.name 'IfcOpenBot'
           git config --global user.email 'IfcOpenBot@users.noreply.github.com'
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/bonsaibim_org_docs
           cd bonsaibim_org_docs
           # Replace everything except the unstable docs.
           find . -mindepth 1 -maxdepth 1 ! -name .git ! -name '*-unstable' -exec rm -rf {} +
-          cp -r ../bonsaibim_docs/site/. .
+          cp ../website/bonsaibim_org_docs_html/index.html .
           cp -r ../IfcOpenShell/src/bonsai/docs/_build/html studio
           cp -r ../IfcOpenShell/src/bonsaiviewer/docs/_build/html viewer
           # TODO: remove after 2027-09-20, see the script.

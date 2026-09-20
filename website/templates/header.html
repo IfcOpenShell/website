@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8">
+        {% if base_url %}<base href="{{ base_url }}">{% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="assets/css/normalize.css">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -69,6 +70,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="community.html" class="nav-link{% if page == "community" %} active{% endif %}">community<span></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="documentation.html" class="nav-link{% if page == "documentation" %} active{% endif %}">documentation<span></span></a>
                             </li>
                             <li class="nav-item">
                                 <a href="https://bonsaibim.org/search-ifc-class.html" class="nav-link">search ifc class<span></span></a>
@@ -150,6 +154,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="community.html" class="nav-link{% if page == "community" %} active{% endif %}">community<span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="documentation.html" class="nav-link{% if page == "documentation" %} active{% endif %}">documentation<span></span></a>
                     </li>
                     {% endif %}
                 </ul>
