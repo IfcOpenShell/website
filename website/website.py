@@ -18,6 +18,11 @@ Environment variables:
              contributors are available).
   COMMIT     Commit SHA to use as the source for VERSION.
              By default the latest commit on the default branch is used.
+  WEBSITE_URL
+             Where bonsaibim.org is served from, used by the landing page of
+             docs.bonsaibim.org to reach the website's assets and pages.
+             Defaults to https://bonsaibim.org/. For a local preview, serve
+             bonsaibim_org_static_html on a port and point this at it.
 
 If neither GH_APIKEY nor OSC_APIKEY is set the site still builds end to end
 using placeholder data, which is handy for local previews.
@@ -33,6 +38,7 @@ from github import Auth, Github
 from jinja2 import Environment, FileSystemLoader
 
 GH_APIKEY = os.getenv("GH_APIKEY")
+WEBSITE_URL = os.getenv("WEBSITE_URL", "https://bonsaibim.org/")
 OSC_APIKEY = os.getenv("OSC_APIKEY")
 
 if GH_APIKEY:
@@ -197,9 +203,7 @@ for brand, content in pages.items():
             # The landing page of docs.bonsaibim.org, not a page of the website. It has no assets
             # or other pages next to it, so everything relative resolves against the website.
             os.makedirs("bonsaibim_org_docs_html", exist_ok=True)
-            content = template.render(
-                brand=brand, page=page, title=title, version=VERSION, base_url="https://bonsaibim.org/"
-            )
+            content = template.render(brand=brand, page=page, title=title, version=VERSION, base_url=WEBSITE_URL)
             with open("bonsaibim_org_docs_html/index.html", mode="w", encoding="utf-8") as f:
                 f.write(content)
             continue
