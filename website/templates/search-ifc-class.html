@@ -73,13 +73,14 @@ function loadJSON(schema, callback) {
     xobj.send(null);  
 }
 
-function getResultsFromSchema(schema) {
-    var filteredResults = []
-
+function getKeywords() {
     let keywords = query.value.trim().split(/\s+/);
     keywords = keywords.map(keyword => keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-    keywords = keywords.filter(k => k.length > 0);
-    console.log(keywords);
+    return keywords.filter(k => k.length > 0);
+}
+
+function getResultsFromSchema(schema, keywords) {
+    var filteredResults = []
 
     for (let [name, data] of Object.entries(schema)) {
         var totalResults = 0;
@@ -110,7 +111,9 @@ function getResultsFromSchema(schema) {
 }
 
 function highlightMatches(text, keywords) {
-    if ( ! keywords) {
+    // An empty keyword list would build the regex "()", which matches between
+    // every character and wraps each of them in a highlight span.
+    if ( ! keywords || keywords.length === 0) {
         return [0, text];
     }
     const regex = new RegExp(`(${keywords.join('|')})`, 'gi');
@@ -140,8 +143,13 @@ function appendLiFromResult(ul, item, liTemplate) {
 }
 
 function getResults(event) {
-    var filteredResults = getResultsFromSchema(document.schema);
-    var filteredAltResults = getResultsFromSchema(document.altSchema);
+    var keywords = getKeywords();
+    if (keywords.length === 0) {
+        results.innerHTML = '<p>Type what kind of object you have to find its IFC class.</p>';
+        return;
+    }
+    var filteredResults = getResultsFromSchema(document.schema, keywords);
+    var filteredAltResults = getResultsFromSchema(document.altSchema, keywords);
     results.innerHTML = '<p>Query value: "<strong>' + query.value + '</strong>" - <strong>' + filteredResults.length + '</strong> result(s) found.</p>';
     var ul = document.createElement('ul');
     filteredResults.forEach(function(item) { appendLiFromResult(ul, item, liTemplate); });
@@ -176,9 +184,15 @@ function onFinishLoadJson(response) {
     getResults();
 }
 
+// Searching rebuilds the whole result list, so wait for a pause in typing.
+var searchTimeout = null;
+function getResultsDebounced(event) {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(getResults, 150);
+}
+
 loadJSON('IFC4', onFinishLoadJson);
-query.addEventListener('change', getResults);
-query.addEventListener('keyup', getResults);
+query.addEventListener('input', getResultsDebounced);
 schema.addEventListener('change', function(event) {
     results.innerHTML = '<p>Loading ...</p>';
     loadJSON(schema.value, onFinishLoadJson);
