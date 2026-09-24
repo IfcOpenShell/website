@@ -103,7 +103,8 @@ function getResultsFromSchema(schema, keywords) {
                 totalResults += totalMatches;
             }
         }
-        if (totalResults > 0) {
+        // With nothing to search for, list everything.
+        if (totalResults > 0 || keywords.length === 0) {
             filteredResults.push([name, cdata])
         }
     }
@@ -144,13 +145,13 @@ function appendLiFromResult(ul, item, liTemplate) {
 
 function getResults(event) {
     var keywords = getKeywords();
-    if (keywords.length === 0) {
-        results.innerHTML = '<p>Type what kind of object you have to find its IFC class.</p>';
-        return;
-    }
     var filteredResults = getResultsFromSchema(document.schema, keywords);
     var filteredAltResults = getResultsFromSchema(document.altSchema, keywords);
-    results.innerHTML = '<p>Query value: "<strong>' + query.value + '</strong>" - <strong>' + filteredResults.length + '</strong> result(s) found.</p>';
+    if (keywords.length === 0) {
+        results.innerHTML = '<p>Showing all <strong>' + filteredResults.length + '</strong> classes. Type above to filter them.</p>';
+    } else {
+        results.innerHTML = '<p>Query value: "<strong>' + query.value + '</strong>" - <strong>' + filteredResults.length + '</strong> result(s) found.</p>';
+    }
     var ul = document.createElement('ul');
     filteredResults.forEach(function(item) { appendLiFromResult(ul, item, liTemplate); });
     filteredAltResults.forEach(function(item) { appendLiFromResult(ul, item, liAltTemplate); });
