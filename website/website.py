@@ -120,6 +120,8 @@ def get_contributors():
             nodes = results["data"]["account"]["members"]["nodes"]
 
             def make_dict(result):
+                if not result["account"]:
+                    return None, None
                 slug = result["account"]["slug"]
                 di = {
                     "name": result["account"]["name"],
@@ -133,6 +135,8 @@ def get_contributors():
             # Seems like some members are mentioned multiple times, with indentical
             # data, folding data based on slug eliminates these duplicates.
             for slug, di in dict(map(make_dict, nodes)).items():
+                if not slug:
+                    continue
                 if slug in dicts:
                     dicts[slug]["amount"] += di["amount"]
                 else:
