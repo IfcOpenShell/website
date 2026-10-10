@@ -3,20 +3,59 @@ on:
   workflow_dispatch:
 jobs:
   ifcopenshell-docs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+    env:
+      BUILD_DIR: ${{ github.workspace }}/ifcopenshell_build
+      IFCOPENSHELL_WASM_DIR: ${{ github.workspace }}/ifcopenshell_build/Linux/wasm/build/ifcopenshell/build/ifcwrap/wasm
+      IFCOS_CMAKE_ARGS: -DIFCOPENSHELL_WASM_LINK_OPTIMIZATION=-O0
+      IFCOS_SCHEMAS: '4'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up uv
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install build and documentation dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y autoconf automake bison byacc build-essential ccache cmake doxygen graphviz libtool ninja-build python3-venv
+          wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc > /dev/null
+          sudo add-apt-repository -y "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-21 main"
+          sudo apt update
+          sudo apt install -y clang-21 libclang-21-dev
+          sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/lib/llvm-21/bin/clang++ 200
+          uv python install
       - working-directory: ./
         env:
           GH_APIKEY: ${{ secrets.GH_APIKEY }}
         run: |
-          sudo apt update && sudo apt install -y python3-pip
-          pip3 install furo sphinx-autoapi sphinx-copybutton
-          pip3 install --force-reinstall -v "astroid==3.3.8"
-          git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/IfcOpenShell
-          cd IfcOpenShell/src/ifcopenshell-python/docs
-          make html
+          git clone --branch v0.9.0 --recursive https://github.com/IfcOpenShell/IfcOpenShell
+          git clone --depth 1 --branch wasm-native https://github.com/IfcOpenShell/build-outputs ifcopenshell_build
+          cd ifcopenshell_build
+          uv run ../IfcOpenShell/nix/cache_dependencies.py unpack
+          cd ../IfcOpenShell
+          uv run --with clang==21.1.7 ./nix/build-all.py -v --native-wasm --build-cfg Release
+          cd src/ts/ifcopenshell-wasm
+          npm ci
+          npm run stage
+          cd ../ifcopenshell-js
+          npm ci
+          npm run build
+          npm run docs
+          npm run docs:sphinx
+          cd ../../../docs
+          uv venv
+          uv pip install -r requirements.txt
+          PROJECT_NUMBER="$(git rev-parse --short HEAD)" uv run --no-project sphinx-build -j 2 -b html . _build/html
+          test -s _build/html/index.html
+          test -s _build/html/cpp-api.html
+          test -s _build/html/output/api/library_root.html
+          test -s _build/html/autoapi/ifcopenshell/index.html
+          test -s _build/html/ifcopenshell-js.html
+          test -s _build/html/output/typescript-api/index.html
           git config --global user.name 'IfcOpenBot'
           git config --global user.email 'IfcOpenBot@users.noreply.github.com'
           git clone https://${{ secrets.GH_APIKEY }}@github.com/IfcOpenShell/ifcopenshell_org_docs
@@ -25,5 +64,9 @@ jobs:
           cp -r _build/html/* ifcopenshell_org_docs/
           touch ifcopenshell_org_docs/.nojekyll
           git -C ifcopenshell_org_docs add .
+          if git -C ifcopenshell_org_docs diff --cached --quiet; then
+            echo "Documentation is unchanged"
+            exit 0
+          fi
           git -C ifcopenshell_org_docs commit -m "Build"
           git -C ifcopenshell_org_docs push
