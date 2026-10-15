@@ -1,6 +1,10 @@
 name: ifcopenshell-docs
 on:
   workflow_dispatch:
+    inputs:
+      ref:
+        description: IfcOpenShell branch or tag to build the docs from
+        default: v0.9.0
 jobs:
   ifcopenshell-docs:
     runs-on: ubuntu-22.04
@@ -31,8 +35,9 @@ jobs:
       - working-directory: ./
         env:
           GH_APIKEY: ${{ secrets.GH_APIKEY }}
+          REF: ${{ inputs.ref }}
         run: |
-          git clone --branch v0.9.0 --recursive https://github.com/IfcOpenShell/IfcOpenShell
+          git clone --branch "$REF" --recursive https://github.com/IfcOpenShell/IfcOpenShell
           git clone --depth 1 --branch wasm-native https://github.com/IfcOpenShell/build-outputs ifcopenshell_build
           cd ifcopenshell_build
           uv run ../IfcOpenShell/nix/cache_dependencies.py unpack
