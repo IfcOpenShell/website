@@ -5,6 +5,9 @@ on:
       ref:
         description: IfcOpenShell branch or tag to build the docs from
         default: v0.9.0
+      version:
+        description: Version to use in the docs (e.g. download links) instead of the branch's VERSION
+        default: ""
 jobs:
   ifcopenshell-docs:
     runs-on: ubuntu-22.04
@@ -36,6 +39,7 @@ jobs:
         env:
           GH_APIKEY: ${{ secrets.GH_APIKEY }}
           REF: ${{ inputs.ref }}
+          DOCS_VERSION: ${{ inputs.version }}
         run: |
           git clone --branch "$REF" --recursive https://github.com/IfcOpenShell/IfcOpenShell
           git clone --depth 1 --branch wasm-native https://github.com/IfcOpenShell/build-outputs ifcopenshell_build
@@ -52,6 +56,8 @@ jobs:
           npm run docs
           npm run docs:sphinx
           cd ../../../docs
+          # TODO: use `poe version --bump` to ensure version is valid.
+          if [ -n "$DOCS_VERSION" ]; then echo "$DOCS_VERSION" > ../VERSION; fi
           uv venv
           uv pip install -r requirements.txt
           PROJECT_NUMBER="$(git rev-parse --short HEAD)" uv run --no-project sphinx-build -j 2 -b html . _build/html
