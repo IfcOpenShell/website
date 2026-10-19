@@ -2,14 +2,26 @@ name: publish-websites
 
 on:
   workflow_dispatch:
+    inputs:
+      cpp_sdk_run_id:
+        description: Successful IfcOpenShell C++ SDK workflow run ID
+        default: '39129013616'
+        required: true
+        type: string
 
 jobs:
   publish_websites:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
+
+      - name: Capture examples using the precompiled C++ SDK
+        uses: ./.github/actions/capture-cpp-examples
+        with:
+          sdk-run-id: ${{ inputs.cpp_sdk_run_id }}
+          github-token: ${{ secrets.GH_APIKEY }}
 
       - working-directory: ./website
         env:

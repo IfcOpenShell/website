@@ -1,0 +1,38 @@
+name: Capture C++ examples with the Linux SDK
+description: Download a verified SDK artifact, compile the homepage examples, and capture their real output.
+inputs:
+  sdk-run-id:
+    description: Successful IfcOpenShell C++ SDK workflow run
+    required: true
+  github-token:
+    description: Token with Actions read access to IfcOpenShell/IfcOpenShell
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+      with:
+        repository: IfcOpenShell/IfcOpenShell
+        run-id: ${{ inputs.sdk-run-id }}
+        github-token: ${{ inputs.github-token }}
+        name: ifcopenshell-cpp-linux64
+        path: ${{ runner.temp }}/cpp-sdk-artifact
+    - name: Verify and extract C++ SDK
+      shell: bash
+      run: |
+        set -euo pipefail
+        cd "$RUNNER_TEMP/cpp-sdk-artifact"
+        sha256sum --check ./*.zip.sha256
+        mkdir -p "$RUNNER_TEMP/cpp-sdk"
+        unzip -q ./*.zip -d "$RUNNER_TEMP/cpp-sdk"
+        mapfile -t prefixes < <(find "$RUNNER_TEMP/cpp-sdk" -mindepth 1 -maxdepth 1 -type d)
+        test "${#prefixes[@]}" -eq 1
+        test -s "${prefixes[0]}/lib/cmake/IfcOpenShell/IfcOpenShellConfig.cmake"
+        echo "IFCOPENSHELL_PREFIX=${prefixes[0]}" >> "$GITHUB_ENV"
+    - name: Compile and capture C++ and CLI examples
+      shell: bash
+      working-directory: website
+      run: |
+        uv run --with cmake==3.31.6 examples/run.py \
+          --language cpp --language cli --config Release \
+          --prefix "$IFCOPENSHELL_PREFIX"

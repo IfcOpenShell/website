@@ -36,14 +36,31 @@ If neither GH_APIKEY nor OSC_APIKEY is set the site still builds end to end
 using placeholder data, which is handy for local previews.
 """
 
+import argparse
 import itertools
 import operator
 import os
+from pathlib import Path
 import shutil
+import subprocess
 
+from example_catalog import load_examples
+from examples.prepare_pyodide import prepare_wheels
 import requests
 from github import Auth, Github
 from jinja2 import Environment, FileSystemLoader
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--refresh-examples", action="store_true", help="Run all examples before assembling the website")
+parser.add_argument("--ifcopenshell-prefix", default=os.getenv("IFCOPENSHELL_PREFIX"), help="Native installation for refreshing C++/CLI examples")
+parser.add_argument("--examples-cmake-arg", action="append", default=[], help="Additional CMake argument for the example runner")
+args = parser.parse_args()
+if args.refresh_examples:
+    command = ["uv", "run", "examples/run.py"]
+    if args.ifcopenshell_prefix:
+        command += ["--prefix", args.ifcopenshell_prefix]
+    command += [f"--cmake-arg={arg}" for arg in args.examples_cmake_arg]
+    subprocess.run(command, check=True)
 
 GH_APIKEY = os.getenv("GH_APIKEY")
 WEBSITE_URL = os.getenv("WEBSITE_URL", "https://bonsaibim.org/")
@@ -198,6 +215,8 @@ else:
     VERSION = "0.0.0-dev"
 
 environment = Environment(loader=FileSystemLoader("templates/"))
+prepare_wheels()
+examples = load_examples()
 
 for brand, content in pages.items():
     os.makedirs(f"{brand}_org_static_html", exist_ok=True)
@@ -208,6 +227,15 @@ for brand, content in pages.items():
         extra = {}
         if brand == "ifcopenshell" and page == "index":
             extra = get_contributors()
+            extra["examples"] = examples
+            # Older builds shipped the sources and wheels beside the page.
+            # The playground now embeds every listing and capture in index.html.
+            output_root = Path(f"{brand}_org_static_html").resolve()
+            old_examples = output_root / "examples"
+            if old_examples.exists():
+                if old_examples.resolve().parent != output_root:
+                    raise RuntimeError(f"Unexpected generated examples path: {old_examples}")
+                shutil.rmtree(old_examples)
         elif brand == "bonsaibim" and page == "blender":
             filename = "index.html"
         if brand == "bonsaibim" and page == "documentation":

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Walls against walls",
+    "mode": "intersection",
+    "tolerance": 0.002,
+    "check_all": true,
+    "a": [{"file": "model.ifc", "selector": "IfcWall", "mode": "i"}],
+    "b": []
+  }
+]

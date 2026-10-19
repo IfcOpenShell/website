@@ -1,0 +1,146 @@
+{
+  "python/Edit_a_wall.py": {
+    "sha256": "ed43fc5b65ad31480023959caa599631b996480af0da45a23f5b0d2628b67c8b",
+    "command": "$ python Edit_a_wall.py",
+    "output": "Renamed 1 of 3 walls",
+    "version": "0.9.0"
+  },
+  "python/Inspect_a_door.py": {
+    "sha256": "a1ce934e71aff699ff9a3de818090d6cf81490a58553125dcca6f2815c741895",
+    "command": "$ python Inspect_a_door.py",
+    "output": "DBL-1200x2100 on Level 1\nFire rating: 60min",
+    "version": "0.9.0"
+  },
+  "python/Author_from_scratch.py": {
+    "sha256": "e286812d4219062e9f83c1e782a257df1f8940d7f094b3824606d3cbda2b6002",
+    "command": "$ python Author_from_scratch.py",
+    "output": "Wrote model.ifc (IFC4) - 1 wall",
+    "version": "0.9.0"
+  },
+  "javascript/Edit_a_wall.mjs": {
+    "sha256": "cd94875ff593acd4e56ac16177afe8d02d78f7a99890e0f45c037f5c507d495d",
+    "command": "$ node Edit_a_wall.mjs",
+    "output": "Renamed 1 of 3 walls",
+    "version": "0.9.0"
+  },
+  "javascript/Read_walls.mjs": {
+    "sha256": "9990c5392d9f62a486c3a1a5ea1fe633ad52a28e54180de561af1dba32903d69",
+    "command": "$ node Read_walls.mjs",
+    "output": "3 walls found\nExterior - Brick\nInterior - Partition\nCore - Concrete",
+    "version": "0.9.0"
+  },
+  "javascript/Author_a_model.mjs": {
+    "sha256": "2012f8ae252cc91942cf4c805f2d0df28109db4564e0e97f745f368cd873072d",
+    "command": "$ node Author_a_model.mjs",
+    "output": "Wrote model.ifc - 1 wall in schema IFC4",
+    "version": "0.9.0"
+  },
+  "cli/Convert.sh": {
+    "sha256": "c44e3cfc2fdad8e60559076df35b9d63100add40a26a7f844a66f8438f7851c1",
+    "command": "$ sh Convert.sh",
+    "output": "$ IfcConvert -y model.ifc model.glb\nIfcOpenShell IfcConvert 0.9.1\nScanning file...\n\nDone scanning file   \nDone resolving references\nParsing input file took 0 seconds\nCreating geometry...\n\n[################                                  ]\n[#################################                 ]\n[##################################################]\nDone creating geometry (3 objects)                                \n\nConversion took 0 seconds\n$ IfcConvert -y --model-offset \"10000;10000;0\" model.ifc model.dae\nIfcOpenShell IfcConvert 0.9.1\nScanning file...\n\nDone scanning file   \nDone resolving references\nParsing input file took 0 seconds\nCreating geometry...\n\n[################                                  ]\n[#################################                 ]\n[##################################################]\nDone creating geometry (3 objects)                                \n\nConversion took 0 seconds",
+    "version": "0.9.0",
+    "native_version": "0.9.1",
+    "sdk": {
+      "commit": "52933db8119aeb33c8002961003a1ede8e2c60cd",
+      "architecture": "linux64",
+      "configuration": "Release"
+    }
+  },
+  "cli/Validate_IDS.sh": {
+    "sha256": "483fc6543bf9aaec655e8a3cd144ca0df43bd09494761961492aa45fd0b8acfb",
+    "command": "$ sh Validate_IDS.sh",
+    "output": "$ python -m ifctester specs.ids model.ifc --no-color\nFinished loading: 0.0022656917572021484\nFinished validating: 0.0005009174346923828\nDoor fire rating\n[PASS] (1/1) *Doors have a fire rating\n    Applies to:\n        All IFCDOOR data\n    Requirements:\n        FireRating data shall be 60min and in the dataset Pset_DoorCommon\n\n$ python -m ifctester specs.ids model.ifc -r Html -o report.html\nFinished loading: 0.002384662628173828\nFinished validating: 0.000457763671875",
+    "version": "0.9.0",
+    "native_version": "0.9.1",
+    "sdk": {
+      "commit": "52933db8119aeb33c8002961003a1ede8e2c60cd",
+      "architecture": "linux64",
+      "configuration": "Release"
+    }
+  },
+  "cli/Diff_and_report.sh": {
+    "sha256": "2597d80c6206c91f484ff2cd8e9f9321a4ce0a592a801d1190c1a745ed7d9d42",
+    "command": "$ sh Diff_and_report.sh",
+    "output": "$ python -m ifcdiff model.ifc new.ifc -o diff.json\n# IFC Diff\nLoading old file ...\nLoading new file ...\n# Loading finished in 0.00 seconds\n - 7 item(s) are in the old model\n - 7 item(s) are in the new model\n - 0 item(s) were added\n - 0 item(s) were deleted\n - 7 item(s) are common to both models\n - 1 item(s) had simple changes\n - 2 item(s) are queued for a detailed geometry check\n... processing old shapes ...\n... processing new shapes ...\n... comparing shapes ...\n - 1 item(s) were changed\n# Diff finished in 0.03 seconds\n$ python -m ifccsv -i model.ifc -s doors.csv --export -q \"IfcDoor\" -a Name\n$ cat doors.csv\nGlobalId,Name\n0000000000000000000002,Door - 01\n$ python -m ifcclash -o results.json clashsets.json\nCreating group a\nLoading IFC model.ifc\nLoading finished 0.002463102340698242\nCreating iterator\nIterator creation finished 0.0021390914916992188\nAdding objects a (3 elements)\nTree finished 0.010698080062866211\nElement metadata finished 4.887580871582031e-05\nFound clashes: 0",
+    "version": "0.9.0",
+    "native_version": "0.9.1",
+    "sdk": {
+      "commit": "52933db8119aeb33c8002961003a1ede8e2c60cd",
+      "architecture": "linux64",
+      "configuration": "Release"
+    }
+  },
+  "cpp/Read_walls.cpp": {
+    "sha256": "50577ee4af3f9af66cc17af2a5b01836a9896b432487dde5e57c3f2faee7dd5b",
+    "command": "$ ./Read_walls",
+    "output": "3 walls found\nExterior - Brick\nInterior - Partition\nCore - Concrete",
+    "version": "0.9.1",
+    "native_version": "0.9.1",
+    "sdk": {
+      "commit": "52933db8119aeb33c8002961003a1ede8e2c60cd",
+      "architecture": "linux64",
+      "configuration": "Release"
+    }
+  },
+  "cpp/Edit_a_wall.cpp": {
+    "sha256": "a38359edab8f18a85164c9c805e0069e4573e0b76872f06818ed0d371dbf5f09",
+    "command": "$ ./Edit_a_wall",
+    "output": "Renamed 1 of 3 walls",
+    "version": "0.9.1",
+    "native_version": "0.9.1",
+    "sdk": {
+      "commit": "52933db8119aeb33c8002961003a1ede8e2c60cd",
+      "architecture": "linux64",
+      "configuration": "Release"
+    }
+  },
+  "cpp/Extract_geometry.cpp": {
+    "sha256": "dd99f0c0ee975937a82f5cf4bd4c326e2f972e8418c58caee413114c67988c74",
+    "command": "$ ./Extract_geometry",
+    "output": "Exterior - Brick: 8 vertices\nInterior - Partition: 8 vertices\nCore - Concrete: 8 vertices",
+    "version": "0.9.1",
+    "native_version": "0.9.1",
+    "sdk": {
+      "commit": "52933db8119aeb33c8002961003a1ede8e2c60cd",
+      "architecture": "linux64",
+      "configuration": "Release"
+    }
+  },
+  "cpp/Author_a_model.cpp": {
+    "sha256": "d8b0a302b396d7e80ef1ad45ac88536ccb4537d1013eed96d3a6c45d936495e4",
+    "command": "$ ./Author_a_model",
+    "output": "Wrote model.ifc - 1 wall in schema IFC4",
+    "version": "0.9.1",
+    "native_version": "0.9.1",
+    "sdk": {
+      "commit": "52933db8119aeb33c8002961003a1ede8e2c60cd",
+      "architecture": "linux64",
+      "configuration": "Release"
+    }
+  },
+  "pyodide/Edit_a_wall.html": {
+    "sha256": "bece7fc8a1f7519de4e9d848102a0383e4d89a6ef07484d5ee98b2d02fc8e34f",
+    "command": "Open examples/pyodide/Edit_a_wall.html over HTTP",
+    "output": "Renamed 1 of 3 walls",
+    "version": "0.9.1"
+  },
+  "pyodide/Read_walls.html": {
+    "sha256": "e9e8be31f64bcbeddbd5403bd1b4d873febde4aa931141f9269f55edbaf648a0",
+    "command": "Open examples/pyodide/Read_walls.html over HTTP",
+    "output": "3 walls found\nExterior - Brick\nInterior - Partition\nCore - Concrete",
+    "version": "0.9.1"
+  },
+  "pyodide/Inspect_a_door.html": {
+    "sha256": "d37bd23329848f048d863d51aeb5da9d37259bcf133ebdf9ab71f1e986cde972",
+    "command": "Open examples/pyodide/Inspect_a_door.html over HTTP",
+    "output": "DBL-1200x2100 on Level 1\nFire rating: 60min",
+    "version": "0.9.1"
+  },
+  "pyodide/From_a_file_input.html": {
+    "sha256": "eecf93b7aa89d9710231cdfdab03e4bed12a7f00cb66c89fffc1c6fd2baefc33",
+    "command": "Open examples/pyodide/From_a_file_input.html over HTTP",
+    "output": "Schema: IFC4",
+    "version": "0.9.1"
+  }
+}

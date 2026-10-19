@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>IfcOpenShell - Inspect a door</title>
+<pre id="output">Loading IfcOpenShell 0.9.1+e050d20...
+</pre>
+
+<script type="module">
+// begin-example
+import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.mjs";
+// end-example
+const output = document.querySelector("#output");
+const log = console.log.bind(console);
+console.log = (...args) => { output.textContent += args.join(" ") + "\n"; log(...args); };
+try {
+// begin-example
+const pyodide = await loadPyodide();
+await pyodide.loadPackage("micropip");
+const micropip = pyodide.pyimport("micropip");
+await micropip.install("wheels/ifcopenshell-0.9.1+e050d20-cp313-cp313-pyemscripten_2025_0_wasm32.whl");
+await micropip.install("wheels/ifcopenshell_parse_schema_ifc4-0.9.1+e050d20-cp313-cp313-pyemscripten_2025_0_wasm32.whl");
+await micropip.install("wheels/ifcopenshell_pure_python-0.9.1+e050d20-py3-none-any.whl");
+const ifcopenshell = pyodide.pyimport("ifcopenshell");
+
+// end-example
+window.examplePyodide = pyodide;
+output.textContent = "";
+// begin-example
+const element = pyodide.pyimport("ifcopenshell.util.element");
+const response = await fetch("../fixtures/model.ifc");
+const model = ifcopenshell.file.from_string(await response.text());
+const door = model.by_type("IfcDoor").get(0);
+const psets = element.get_psets(door).toJs({dict_converter: Object.fromEntries});
+const doorType = element.get_type(door);
+const storey = element.get_container.callKwargs(door, {ifc_class: "IfcBuildingStorey"});
+console.log(`${doorType.Name} on ${storey.Name}`);
+console.log("Fire rating:", psets.Pset_DoorCommon.FireRating);
+// end-example
+window.exampleReady = true;
+} catch (error) {
+    output.textContent = error.stack;
+    window.exampleError = String(error);
+    console.error(error);
+}
+</script>
+</html>

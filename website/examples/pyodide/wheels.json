@@ -1,0 +1,9 @@
+{
+  "url": "https://s3.amazonaws.com/ifcopenshell-builds/ifcopenshell-modular-v0.9.1-e050d20-pyodide.zip",
+  "sha256": "eb6270382bfe04de6eb26a0f1363b7fe3638d3374b8e8e5f0fcc8354dc926c6e",
+  "files": [
+    "ifcopenshell-0.9.1+e050d20-cp313-cp313-pyemscripten_2025_0_wasm32.whl",
+    "ifcopenshell_parse_schema_ifc4-0.9.1+e050d20-cp313-cp313-pyemscripten_2025_0_wasm32.whl",
+    "ifcopenshell_pure_python-0.9.1+e050d20-py3-none-any.whl"
+  ]
+}

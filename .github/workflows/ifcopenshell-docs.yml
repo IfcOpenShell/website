@@ -8,6 +8,11 @@ on:
       version:
         description: Version to use in the docs (e.g. download links) instead of the branch's VERSION
         default: ""
+      cpp_sdk_run_id:
+        description: Successful IfcOpenShell C++ SDK workflow run ID
+        default: '39129013616'
+        required: true
+        type: string
 jobs:
   ifcopenshell-docs:
     runs-on: ubuntu-22.04
@@ -25,6 +30,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Capture examples using the precompiled C++ SDK
+        uses: ./.github/actions/capture-cpp-examples
+        with:
+          sdk-run-id: ${{ inputs.cpp_sdk_run_id }}
+          github-token: ${{ secrets.GH_APIKEY }}
+      - name: Assemble inline homepage examples
+        working-directory: website
+        run: uv run website.py
+      - name: Upload compiled example output and inline homepage
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: website-examples
+          path: |
+            website/examples/captures.json
+            website/ifcopenshell_org_static_html/index.html
+          if-no-files-found: error
       - name: Install build and documentation dependencies
         run: |
           sudo apt update
@@ -35,6 +56,14 @@ jobs:
           sudo apt install -y clang-21 libclang-21-dev
           sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/lib/llvm-21/bin/clang++ 200
           uv python install
+      - name: Checkout Build Repository
+        uses: actions/checkout@v7
+        with:
+          repository: IfcOpenShell/build-outputs
+          path: ifcopenshell_build
+          ref: wasm-native
+          lfs: true
+          token: ${{ secrets.BUILD_REPO_TOKEN }}
       - working-directory: ./
         env:
           GH_APIKEY: ${{ secrets.GH_APIKEY }}

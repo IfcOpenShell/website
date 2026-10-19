@@ -1,0 +1,7 @@
+{
+  "python": ["Edit_a_wall.py", "Inspect_a_door.py", "Author_from_scratch.py"],
+  "cpp": ["Read_walls.cpp", "Edit_a_wall.cpp", "Extract_geometry.cpp", "Author_a_model.cpp"],
+  "javascript": ["Edit_a_wall.mjs", "Read_walls.mjs", "Author_a_model.mjs"],
+  "pyodide": ["Edit_a_wall.html", "Read_walls.html", "Inspect_a_door.html", "From_a_file_input.html"],
+  "cli": ["Convert.sh", "Validate_IDS.sh", "Diff_and_report.sh"]
+}

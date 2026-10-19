@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "ifcopenshell": "0.9.0",
+    "@ifcopenshell/wasm": "0.9.0"
+  }
+}
