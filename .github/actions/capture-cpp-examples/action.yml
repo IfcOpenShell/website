@@ -33,6 +33,6 @@ runs:
       shell: bash
       working-directory: website
       run: |
-        uv run --with cmake==3.31.6 examples/run.py \
+        uv run --python 3.13 --with cmake==3.31.6 examples/run.py \
           --language cpp --language cli --config Release \
           --prefix "$IFCOPENSHELL_PREFIX"
